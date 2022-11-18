@@ -31,10 +31,32 @@ html {
   font-size: 16px;
 }
 
+.font-h1 {
+  line-height: 3rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.font-h2 {
+  line-height: 2.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 .font-body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
+}
+
+.input-body1 {
+  border: solid 1px #d9d9d9;
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  font-size: 1rem;
+  line-height: 24px;
 }
 
 /* float 해제 클래스 */
@@ -69,9 +91,30 @@ nav ul .nav-item {
   align-items: center;
   justify-content: center;
 }
+nav ul .state-login {
+  border-radius: 0.5rem;
+  border: solid 1px #000000;
+}
 
-main .container {
+main #container {
   width: 50rem;
   margin: 4.5rem auto 0;
+  padding: 0 2.5rem;
   min-height: 100vh;
+}
+main #container #profile {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2.5rem;
+  gap: 24px;
+}
+main #container #profile #Profile-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+main #container #profile input {
+  width: 21rem;
 }/*# sourceMappingURL=style.css.map */
