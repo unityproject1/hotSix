@@ -1,0 +1,1 @@
+{"version":3,"sources":["static/scss/main.scss"],"names":[],"mappings":"AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,eAAe,GAIxB;EALD,AAEE,QAFM,CAEN,CAAC,CAAC;IACA,eAAe,EAAE,IAAI,GACtB","file":"main.736bfdb1.css","sourceRoot":"..","sourcesContent":[".sidebar {\n  border: 1px solid black;\n  a {\n    text-decoration: none;\n  }\n}\n"]}

@@ -5,10 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="./static/scss/main.scss">
     <title>핫소스</title>
 </head>
 
 <body>
+    <div id="root">
+        <nav id="nav-container" class="sidebar">
+            <a href="/" onclick="route(event)">logo</a>
+            <div id="main-nav">
+                <a href="#about" onclick="route(event)">로그인</a>
+                <a href="#lorem" onclick="route(event)">마이페이지</a>
+            </div>
+        </nav>
+        <div id="main-page"></div>
+    </div>
 
 </body>
 
