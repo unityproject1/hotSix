@@ -22,19 +22,39 @@
       <!-- Side bar 보존 -->
       <div id="container">
         <div id="profile">
-          <h1 class="font-h1" id="Profile-title">Profile</h1>
+          <h1 class="font-h2" id="Profile-title">Profile</h1>
           <!-- 임시 프로필 이미지 -->
           <img id="Profile-img" src="./img/hide-the-pain-harold.jpeg" alt="" />
-          <input class="input-body1 font-body" type="text" placeholder="이름" />
+          <input class="input-body1 font-body" type="text" placeholder="Name" />
         </div>
-        <div class="user-article">
-          <h2 class="font-h2">내 게시물</h2>
-          <!-- 내 게시물 보기 -->
-          <article>
-            <img src="./img/RemixJS.jpg" alt="" />
-            <h3></h3>
-            <div class="article-date"></div>
-          </article>
+        <div class="my-article">
+          <h2 class="font-h2 my-article-section-title">My article</h2>
+          <ul id="article-lists">
+            <li>
+              <article class="article-card">
+                <img src="./img/RemixJS.jpg" alt="" />
+                <div class="article-card-info">
+                  <h3 class="font-h3 article-title">
+                    Focused on web standards and modern web app UX, you’re
+                    simply going to build better websites
+                  </h3>
+                  <div class="article-date font-tiny">2022.11.18.</div>
+                </div>
+              </article>
+            </li>
+            <li>
+              <article class="article-card">
+                <img src="./img/RemixJS.jpg" alt="" />
+                <div class="article-card-info">
+                  <h3 class="font-h3 article-title">
+                    Focused on web standards and modern web app UX, you’re
+                    simply going to build better websites
+                  </h3>
+                  <div class="article-date font-tiny">2022.11.18.</div>
+                </div>
+              </article>
+            </li>
+          </ul>
         </div>
       </div>
       <!-- Side bar 보존 -->
