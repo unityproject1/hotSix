@@ -72,7 +72,7 @@ html {
   border-radius: 0.5rem;
   height: 2.5rem;
   box-sizing: border-box;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 24px;
 }
@@ -94,7 +94,7 @@ nav {
   padding: 0 3rem;
 }
 nav #logo {
-  color: #0d4c92;
+  fill: #000000;
 }
 nav ul {
   display: flex;
@@ -136,8 +136,20 @@ main #container #profile #Profile-img {
   height: 10rem;
   border-radius: 50%;
 }
-main #container #profile input {
+main #container #profile .user-name {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+main #container #profile .user-name input {
   width: 21rem;
+}
+main #container #profile .user-name button {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #000000;
 }
 main #container .my-article-section-title {
   margin: 0 0 2rem;

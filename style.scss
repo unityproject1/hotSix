@@ -69,7 +69,7 @@ html {
   border-radius: 0.5rem;
   height: 2.5rem;
   box-sizing: border-box;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   font-size: 1rem;
   line-height: 24px;
 }
@@ -90,8 +90,7 @@ nav {
   align-items: center;
   padding: 0 3rem;
   #logo {
-    // TODO 이미지로 교체해주세요
-    color: #0d4c92;
+    fill: #000000;
   }
   ul {
     display: flex;
@@ -131,8 +130,20 @@ main {
         height: 10rem;
         border-radius: 50%;
       }
-      input {
-        width: 21rem;
+      .user-name {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        input {
+          width: 21rem;
+        }
+        button {
+          width: auto;
+          padding: 0.5rem 0.75rem;
+          border-radius: 0.5rem;
+          color: white;
+          background-color: #000000;
+        }
       }
     }
     .my-article-section-title {
