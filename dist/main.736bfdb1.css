@@ -1,7 +1,151 @@
-.sidebar {
-  border: 1px solid black; }
-  .sidebar a {
-    text-decoration: none; }
+body {
+  --blue200: #90c2ff;
+  --blue300: #64a8ff;
+  --Grey500: #8b95a1;
+  --Grey700: #4e5968;
+  --Grey800: #333d4b;
+  --adaptiveOpacity300: rgba(0, 29, 58, 0.18);
+  --adaptiveOpacity50: rgba(0, 23, 51, 0.05); }
+
+#navbar {
+  border-bottom: 0.5px solid var(--Grey500);
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  left: 0;
+  transition: background-color 0.2s ease; }
+  #navbar .nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #navbar .nav-container .nav-inner {
+      width: 92%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      #navbar .nav-container .nav-inner a {
+        text-decoration: none;
+        color: var(--Grey800); }
+      #navbar .nav-container .nav-inner .logo {
+        font-family: "Pacifico", sans-serif;
+        margin: 0 30px;
+        cursor: pointer; }
+      #navbar .nav-container .nav-inner .main-nav {
+        margin: 0px 30px; }
+        #navbar .nav-container .nav-inner .main-nav .nav-menu {
+          display: flex;
+          align-items: center;
+          padding: 0;
+          margin: 0; }
+          #navbar .nav-container .nav-inner .main-nav .nav-menu .nav-item {
+            list-style: none; }
+            #navbar .nav-container .nav-inner .main-nav .nav-menu .nav-item a {
+              margin: 0 10px;
+              color: var(--Grey700);
+              padding: 12px 10px;
+              font-size: 15px;
+              line-height: 20px;
+              color: currentColor;
+              border-radius: 8px;
+              border: 0;
+              cursor: pointer; }
+          #navbar .nav-container .nav-inner .main-nav .nav-menu .nav-item :hover {
+            background-color: var(--adaptiveOpacity50); }
+
+.progress-container {
+  width: 100%;
+  height: 2px;
+  background: transparent; }
+
+.progress-container .progress-bar {
+  width: 0;
+  height: 2px;
+  background: #242424; }
+
+.content-container {
+  width: 750px;
+  height: 80%;
+  margin: 0 auto;
+  padding-top: 60px;
+  overflow-wrap: break-word; }
+  .content-container .create-content {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; }
+    .content-container .create-content .btn {
+      width: 80%;
+      height: 70px;
+      background-color: white;
+      border-radius: 10px; }
+    .content-container .create-content .create-post {
+      font-size: 32px;
+      cursor: pointer; }
+  .content-container .card-container {
+    padding: 80px 40px;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column; }
+    .content-container .card-container .content-box {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      cursor: pointer; }
+      .content-container .card-container .content-box .content-img {
+        inset: 0px;
+        box-sizing: border-box;
+        padding: 0px;
+        border: none;
+        margin: auto;
+        display: block;
+        min-width: 100%;
+        max-width: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        transition: 0.5s all; }
+      .content-container .card-container .content-box span {
+        font-size: 15px;
+        color: var(--Grey500);
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1.4; }
+      .content-container .card-container .content-box h4 {
+        color: var(--Grey800);
+        font-size: 32px;
+        margin-bottom: 10px;
+        margin-bottom: 10px;
+        font-weight: 600;
+        line-height: 1.4;
+        transition: 0.2s ease-in-out; }
+      .content-container .card-container .content-box p {
+        color: var(--Grey700);
+        font-size: 16px;
+        margin-bottom: 10px;
+        font-weight: 300;
+        line-height: 27px; }
+      .content-container .card-container .content-box .time {
+        color: var(--Grey500);
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 10px; }
+    .content-container .card-container .content-box:hover .content-img {
+      box-shadow: 0px 32px 94px -35px #bab8ba;
+      transform: translateY(-30px); }
+    .content-container .card-container .content-box:hover h4 {
+      color: var(--blue300); }
 
 
 /*# sourceMappingURL=/main.736bfdb1.css.map */
