@@ -77,6 +77,14 @@ html {
   line-height: 24px;
 }
 
+.button-body1 {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #000000;
+}
+
 /* float 해제 클래스 */
 .clearfix::after {
   content: "";
@@ -119,13 +127,6 @@ html {
 }
 .content-container #container #profile .user-name input {
   width: 21rem;
-}
-.content-container #container #profile .user-name button {
-  width: auto;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  color: white;
-  background-color: #000000;
 }
 .content-container #container .my-article-section-title {
   margin: 0 0 2rem;
