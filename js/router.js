@@ -1,5 +1,5 @@
 /**
- * @todo 로그인, 회원가입 모달과 detail은 append 형식 라우팅.
+ * @todo detail은 append 형식 라우팅.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/router.js
  */
 
@@ -8,6 +8,9 @@ export const route = (event) => {
   window.location.hash = event.target.hash;
 };
 
+/**
+ * @todo detail 페이지 라우팅 추가
+ */
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
