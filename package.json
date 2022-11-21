@@ -11,9 +11,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "parcel": "^2.8.0",
     "sass": "^1.56.1"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.0",
     "node-sass": "^8.0.0"
   },
   "staticFiles": {
