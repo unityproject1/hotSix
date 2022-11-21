@@ -1,29 +1,34 @@
-"asdf";
-
-const test = () => {};
-
 /**
- * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js
+ * SPA 개발 진행 개념
+ * @see https://poiemaweb.com/js-spa
  */
-// import { changeProfile, onFileChange } from "./pages/profile.js";
 
-/**
- * 필요하면 다른 모듈로 분할하기
- * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/profile.js
- */
-const onFileChange = (event) => {
-  const uploadedFile = event.target.files[0];
+/** @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js */
+import { onFileChange } from "./js/pages/profile.js";
+// import { authService } from "./firebase.js";
+import { handleLocation, route } from "./js/router.js";
 
-  /** @see https://developer.mozilla.org/ko/docs/Web/API/FileReader */
-  const reader = new FileReader();
-  reader.readAsDataURL(uploadedFile);
-  reader.onload = (finishedEvent) => {
-    const imgDataUrl = finishedEvent.currentTarget.result;
-    localStorage.setItem("imgDataUrl", imgDataUrl);
-    document.getElementById("Profile-img").src = imgDataUrl;
-  };
+window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 
-  // const theFile
+document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또는 새로고침 시 처리
+
+// 전역 함수 리스트
+window.route = route;
+window.onFileChange = onFileChange;
+
+// Style
+
+// nav scroll indicator
+window.onscroll = function () {
+  progressBar();
 };
 
-window.onFileChange = onFileChange;
+function progressBar() {
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  let scrolled = (winScroll / height) * 100;
+  document.getElementsByClassName("progress-bar")[0].style.width =
+    scrolled + "%";
+}

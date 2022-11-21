@@ -532,6 +532,19 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"adjPd":[function(require,module,exports) {
+/**
+ * SPA 개발 진행 개념
+ * @see https://poiemaweb.com/js-spa
+ */ /** @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js */ var _profileJs = require("./js/pages/profile.js");
+// import { authService } from "./firebase.js";
+var _routerJs = require("./js/router.js");
+window.addEventListener("hashchange", (0, _routerJs.handleLocation)); // hash url 변경 시 처리
+document.addEventListener("DOMContentLoaded", (0, _routerJs.handleLocation)); // 첫 랜딩 또는 새로고침 시 처리
+// 전역 함수 리스트
+window.route = (0, _routerJs.route);
+window.onFileChange = (0, _profileJs.onFileChange);
+// Style
+// nav scroll indicator
 window.onscroll = function() {
     progressBar();
 };
@@ -542,6 +555,79 @@ function progressBar() {
     document.getElementsByClassName("progress-bar")[0].style.width = scrolled + "%";
 }
 
-},{}]},["1JEHZ","adjPd"], "adjPd", "parcelRequiree79f")
+},{"./js/router.js":"3YNuf","./js/pages/profile.js":"5SQAK"}],"3YNuf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "route", ()=>route);
+parcelHelpers.export(exports, "handleLocation", ()=>handleLocation);
+const route = (event)=>{
+    event.preventDefault();
+    window.location.hash = event.target.hash;
+};
+const routes = {
+    "/": "/pages/home.html",
+    page1: "/pages/page1.html",
+    page2: "/pages/page2.html",
+    404: "/pages/404.html"
+};
+const handleLocation = async ()=>{
+    let path = window.location.hash.replace("#", ""); // ""
+    // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
+    if (path.length == 0) path = "/";
+    const route = routes[path] || routes[404]; // truthy 하면 route[path], falsy 하면 routes[404]
+    const html = await fetch(route).then((data)=>data.text());
+    document.getElementById("main-page").innerHTML = html;
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"5SQAK":[function(require,module,exports) {
+/**
+ * 필요하면 다른 모듈로 분할하기
+ * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/profile.js
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "onFileChange", ()=>onFileChange);
+const onFileChange = (event)=>{
+    const uploadedFile = event.target.files[0];
+    /** @see https://developer.mozilla.org/ko/docs/Web/API/FileReader */ const reader = new FileReader();
+    reader.readAsDataURL(uploadedFile);
+    reader.onload = (finishedEvent)=>{
+        const imgDataUrl = finishedEvent.currentTarget.result;
+        localStorage.setItem("imgDataUrl", imgDataUrl);
+        document.getElementById("Profile-img").src = imgDataUrl;
+    };
+// const theFile
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1JEHZ","adjPd"], "adjPd", "parcelRequiree79f")
 
 //# sourceMappingURL=index.63aff760.js.map
