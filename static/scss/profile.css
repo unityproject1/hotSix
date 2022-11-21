@@ -1,32 +1,36 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap");
-
 /* CSS RESET */
 * {
   padding: 0;
   border: 0;
   margin: 0;
 }
+
 a {
   text-decoration: none;
 }
+
 li {
   list-style: none;
 }
+
 input {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   outline: none;
 }
+
 table {
   border-collapse: collapse;
 }
 
-// root
 html {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
 }
 
-// util-font
 .font-h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -63,7 +67,6 @@ html {
   font-weight: 400;
 }
 
-// util-components
 .input-body1 {
   border: solid 1px #d9d9d9;
   border-radius: 0.5rem;
@@ -81,50 +84,49 @@ html {
   clear: both;
 }
 
-//
 .content-container {
   margin: 4rem 0 8rem;
-  #container {
-    width: 45rem;
-    margin: 4.5rem auto 0;
-    padding: 0 2.5rem;
-    min-height: 100vh;
-    #profile {
-      display: flex;
-      flex-direction: column;
-      margin: 0 0 3.5rem;
-      gap: 24px;
-      #Profile-img {
-        object-fit: cover;
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
-      }
-      label {
-        // img input의 클릭영역과 가시영역을 일치시킵니다.
-        width: 10rem;
-      }
-      #img-input {
-        display: none;
-      }
-      .user-name {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        input {
-          width: 21rem;
-        }
-        button {
-          width: auto;
-          padding: 0.5rem 0.75rem;
-          border-radius: 0.5rem;
-          color: white;
-          background-color: #000000;
-        }
-      }
-    }
-    .my-article-section-title {
-      margin: 0 0 2rem;
-    }
-  }
 }
+.content-container #container {
+  width: 45rem;
+  margin: 4.5rem auto 0;
+  padding: 0 2.5rem;
+  min-height: 100vh;
+}
+.content-container #container #profile {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 3.5rem;
+  gap: 24px;
+}
+.content-container #container #profile #Profile-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+.content-container #container #profile label {
+  width: 10rem;
+}
+.content-container #container #profile #img-input {
+  display: none;
+}
+.content-container #container #profile .user-name {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.content-container #container #profile .user-name input {
+  width: 21rem;
+}
+.content-container #container #profile .user-name button {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: #000000;
+}
+.content-container #container .my-article-section-title {
+  margin: 0 0 2rem;
+}/*# sourceMappingURL=profile.css.map */
