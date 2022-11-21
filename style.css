@@ -142,6 +142,9 @@ main #container #profile #Profile-img {
   height: 10rem;
   border-radius: 50%;
 }
+main #container #profile label {
+  width: 10rem;
+}
 main #container #profile #img-input {
   display: none;
 }

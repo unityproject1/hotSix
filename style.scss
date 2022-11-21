@@ -137,6 +137,10 @@ main {
         height: 10rem;
         border-radius: 50%;
       }
+      label {
+        // img input의 클릭영역과 가시영역을 일치시킵니다.
+        width: 10rem;
+      }
       #img-input {
         display: none;
       }
