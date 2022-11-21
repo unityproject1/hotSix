@@ -64,7 +64,7 @@ body {
   .progress-container .progress-bar {
     width: 0;
     height: 2px;
-    background: #242424; }
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, navy, purple); }
 
 .content-container {
   width: 100%;
@@ -88,7 +88,7 @@ body {
       font-size: 32px;
       cursor: pointer; }
   .content-container .card-container {
-    padding: 80px 40px;
+    padding: 60px 40px;
     height: 80%;
     display: flex;
     justify-content: flex-start;
@@ -133,12 +133,18 @@ body {
         @media screen and (max-width: 560px) {
           .content-container .card-container .content-box h4 {
             font-size: 26px; } }
+        @media screen and (max-width: 525px) {
+          .content-container .card-container .content-box h4 {
+            font-size: 20px; } }
       .content-container .card-container .content-box p {
         color: var(--Grey700);
         font-size: 16px;
         margin-bottom: 10px;
         font-weight: 300;
         line-height: 27px; }
+        @media screen and (max-width: 525px) {
+          .content-container .card-container .content-box p {
+            font-size: 13px; } }
       .content-container .card-container .content-box .time {
         color: var(--Grey500);
         font-size: 14px;
@@ -150,10 +156,9 @@ body {
     .content-container .card-container .content-box:hover h4 {
       color: var(--blue300); }
 
-@media (max-width: 570px) {
+@media screen and (max-width: 560px) {
   h4 {
-    font-size: 26px;
-    color: white; } }
+    font-size: 26px; } }
 
 
 /*# sourceMappingURL=/main.736bfdb1.css.map */
