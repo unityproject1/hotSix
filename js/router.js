@@ -5,8 +5,8 @@ export const route = (event) => {
 
 const routes = {
   "/": "/pages/home.html",
-  page1: "/pages/page1.html",
-  page2: "/pages/page2.html",
+  myPage: "/pages/profile.html",
+  login: "/pages/page2.html",
   404: "/pages/404.html",
 };
 
@@ -18,8 +18,11 @@ export const handleLocation = async () => {
     path = "/";
   }
   const route = routes[path] || routes[404]; // truthy 하면 route[path], falsy 하면 routes[404]
+  const html = await fetch(route).then((data) => data.text())
+    .catch((error) => {
+      console.log(error);
+    });
+    console.log(html);
 
-  const html = await fetch(route).then((data) => data.text());
-
-  document.getElementById("main-page").innerHTML = html;
+  document.querySelector(".content-container").innerHTML = html;
 };

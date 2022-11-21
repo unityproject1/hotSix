@@ -544,7 +544,9 @@ document.addEventListener("DOMContentLoaded", (0, _routerJs.handleLocation)); //
 window.route = (0, _routerJs.route);
 window.onFileChange = (0, _profileJs.onFileChange);
 // Style
-// nav scroll indicator
+/**
+ * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.
+ */ // nav scroll indicator
 window.onscroll = function() {
     progressBar();
 };
@@ -566,8 +568,8 @@ const route = (event)=>{
 };
 const routes = {
     "/": "/pages/home.html",
-    page1: "/pages/page1.html",
-    page2: "/pages/page2.html",
+    myPage: "/pages/profile.html",
+    login: "/pages/page2.html",
     404: "/pages/404.html"
 };
 const handleLocation = async ()=>{
@@ -575,8 +577,11 @@ const handleLocation = async ()=>{
     // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
     if (path.length == 0) path = "/";
     const route = routes[path] || routes[404]; // truthy 하면 route[path], falsy 하면 routes[404]
-    const html = await fetch(route).then((data)=>data.text());
-    document.getElementById("main-page").innerHTML = html;
+    const html = await fetch(route).then((data)=>data.text()).catch((error)=>{
+        console.log(error);
+    });
+    console.log(html);
+    document.querySelector(".content-container").innerHTML = html;
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {

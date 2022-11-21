@@ -17,6 +17,9 @@ window.route = route;
 window.onFileChange = onFileChange;
 
 // Style
+/**
+ * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.
+ */
 
 // nav scroll indicator
 window.onscroll = function () {
