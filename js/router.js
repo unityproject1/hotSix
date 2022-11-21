@@ -9,12 +9,15 @@ export const route = (event) => {
 };
 
 /**
- * @todo detail 페이지 라우팅 추가
+ * @todo detail 페이지접근하기
+ * 1. 자식노드에 #값 부여하기
+ * 2. 자식노드 선택시 부모노드의 #값을 참조하기
  */
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
   login: "/pages/login-modal.html",
+  detail: "/pages/detail.html",
   404: "/pages/404.html",
 };
 
@@ -25,9 +28,8 @@ export const handleLocation = async () => {
   if (path.length == 0) {
     path = "/";
   }
-
+  // const route = routes.detail;
   const route = routes[path] || routes[404]; // truthy 하면 route[path], falsy 하면 routes[404]
   const html = await fetch(route).then((data) => data.text());
-  console.log(html);
   document.querySelector(".content-container").innerHTML = html;
 };
