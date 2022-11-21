@@ -95,8 +95,11 @@ nav {
   padding: 0 3rem;
   #logo {
     fill: rgb(42, 169, 224);
+    height: 2.25rem;
   }
   ul {
+    // TODO 프로필 = 버튼
+    // TODO dropdown: my page, logout
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -133,6 +136,9 @@ main {
         width: 10rem;
         height: 10rem;
         border-radius: 50%;
+      }
+      #img-input {
+        display: none;
       }
       .user-name {
         display: flex;

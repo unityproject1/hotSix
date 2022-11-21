@@ -100,6 +100,7 @@ nav {
 }
 nav #logo {
   fill: rgb(42, 169, 224);
+  height: 2.25rem;
 }
 nav ul {
   display: flex;
@@ -140,6 +141,9 @@ main #container #profile #Profile-img {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
+}
+main #container #profile #img-input {
+  display: none;
 }
 main #container #profile .user-name {
   display: flex;

@@ -21,18 +21,30 @@
     <main>
       <!-- Side bar 보존 -->
       <div id="container">
-        <form id="profile">
+        <form id="profile" onsubmit="">
           <h1 class="font-h2" id="Profile-title">Profile</h1>
-          <!-- 임시 프로필 이미지 -->
-          <!-- TODO 이미지 클릭용 input -->
-          <img id="Profile-img" src="./img/hide-the-pain-harold.jpeg" alt="" />
+          <!-- TODO 이미지 클릭용 input: -->
+          <!-- https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/pages/profile.html -->
+          <label for="img-input">
+            <img
+              id="Profile-img"
+              src="./img/blank-profile-picture-973460.svg"
+              alt="프로필 사진"
+            />
+            <input
+              onchange="onFileChange(event)"
+              id="img-input"
+              type="file"
+              accept="images/*"
+            />
+          </label>
           <div class="user-name">
             <input
               class="input-body1 font-body1"
               type="text"
               placeholder="Name"
             />
-            <button class="font-body1">Update</button>
+            <button class="font-body1">Save</button>
           </div>
         </form>
         <div class="my-article">
