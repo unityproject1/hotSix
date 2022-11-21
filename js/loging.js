@@ -1,17 +1,18 @@
 /**
+ * 미완성
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/fanLog.js
  */
-import {
-  doc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  collection,
-  orderBy,
-  query,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { dbService, authService } from "../firebase.js";
+// import {
+//   doc,
+//   addDoc,
+//   updateDoc,
+//   deleteDoc,
+//   collection,
+//   orderBy,
+//   query,
+//   getDocs,
+// } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+// import { dbService, authService } from "../firebase.js";
 
 export const save_comment = async (event) => {
   event.preventDefault();

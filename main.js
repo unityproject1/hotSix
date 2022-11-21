@@ -1,11 +1,10 @@
 /**
  * SPA 개발 진행 개념
  * @see https://poiemaweb.com/js-spa
+ * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js
  */
 
-/** @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js */
 import { onFileChange } from "./js/profile.js";
-// import { authService } from "./firebase.js";
 import { handleLocation, route } from "./js/router.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
@@ -16,17 +15,11 @@ document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또
 window.route = route;
 window.onFileChange = onFileChange;
 
-// Style
 /**
  * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.
  */
 
-// nav scroll indicator
-window.onscroll = function () {
-  progressBar();
-};
-
-function progressBar() {
+const progressBar = () => {
   let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   let height =
     document.documentElement.scrollHeight -
@@ -34,4 +27,9 @@ function progressBar() {
   let scrolled = (winScroll / height) * 100;
   document.getElementsByClassName("progress-bar")[0].style.width =
     scrolled + "%";
-}
+};
+
+// nav scroll indicator
+window.onscroll = function () {
+  progressBar();
+};

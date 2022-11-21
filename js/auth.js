@@ -1,17 +1,18 @@
 /**
  * 미완성
- * @see
+ * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
-import { emailRegex, pwRegex } from "./util.js";
-import { authService } from "./firebase.js";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-  GithubAuthProvider,
-  signOut,
-} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+// import { emailRegex, pwRegex } from "./util.js";
+// import { authService } from "./firebase.js";
+// import {
+//   createUserWithEmailAndPassword,
+//   signInWithEmailAndPassword,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+//   GithubAuthProvider,
+//   signOut,
+// } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {

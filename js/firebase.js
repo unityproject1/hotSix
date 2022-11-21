@@ -1,10 +1,16 @@
-// Import the functions you need from the SDKs you need
+/**
+ * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/firebase.js
+ */
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
 
-// 아래 데이터는 본인의 Firebase 프로젝트 설정에서 확인할 수 있습니다.
+/**
+ * @todo 재현님 파이어 베이스 추가하기
+ * 아래 데이터는 본인의 Firebase 프로젝트 설정에서 확인할 수 있습니다.
+ */
 const firebaseConfig = {
   apiKey: "",
   authDomain: "",
