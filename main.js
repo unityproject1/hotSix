@@ -4,7 +4,7 @@
  */
 
 /** @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js */
-import { onFileChange } from "./js/pages/profile.js";
+import { onFileChange } from "./js/profile.js";
 // import { authService } from "./firebase.js";
 import { handleLocation, route } from "./js/router.js";
 
