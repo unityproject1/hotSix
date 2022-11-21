@@ -3,7 +3,7 @@
 ## 설치
 
 ```zsh
-npm i parcel
+npm install
 ```
 
 ## 실행
