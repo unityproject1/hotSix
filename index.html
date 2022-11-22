@@ -47,13 +47,13 @@
                     <div class="main-nav">
                         <ul class="nav-menu">
                             <li class="nav-item create-post" style="display: none">
-                                <a href="#create" onclick="route(event)">글쓰기</a>
+                                <a class="nav-item-btn" href="#create" onclick="route(event)">글쓰기</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#login" onclick="route(event)">로그인</a>
+                                <div class="nav-item-btn" href="#login" onclick="openPopupLogin()">로그인</div>
                             </li>
                             <li class="nav-item">
-                                <a href="#myPage" onclick="route(event)">마이페이지</a>
+                                <a class="nav-item-btn" href="#myPage" onclick="route(event)">마이페이지</a>
                             </li>
                         </ul>
                     </div>
@@ -63,6 +63,11 @@
                 <div class="progress-bar"></div>
             </div>
         </nav>
+        <div class="auth-container">
+            <div class="login-modal"></div>
+            <div class="signup-modal"></div>
+            <div class="overlay"></div>
+        </div>
         <div class="content-container"></div>
 </body>
 </html>

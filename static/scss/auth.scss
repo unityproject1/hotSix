@@ -1,17 +1,21 @@
-// 주석 입력
-.overlay {
-  // 오버레이 중앙정렬
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.48);
-  // 모달 레이아웃 중앙정렬
+.auth-container {
+  //
+}
+
+.auth-modal {
+  padding: 2rem;
+  width: 34rem;
+  z-index: 2;
+  background-color: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
   .modal-header {
     display: flex;
     flex-direction: row;
@@ -49,20 +53,17 @@
     background: #fee500;
     color: #000000;
   }
+}
 
-  .auth-modal {
-    padding: 2rem;
-    width: 34rem;
-
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    border-radius: 1rem;
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-  }
+.overlay {
+  // pointer-events: none;
+  // 오버레이 중앙정렬
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.48);
+  display: none;
 }
