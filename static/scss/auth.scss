@@ -1,63 +1,68 @@
 // 주석 입력
 .overlay {
-    // 오버레이 중앙정렬
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.48);
-    // 모달 레이아웃 중앙정렬
+  // 오버레이 중앙정렬
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.48);
+  // 모달 레이아웃 중앙정렬
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .modal-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btn {
+    // 사이즈와 모양을 반영
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    .modal-header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+  }
+  .login {
+    background: #000000;
+    color: #ffffff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .signup {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #d9d9d9;
+  }
+  .google {
+    background: #5383ec;
+    color: #ffffff;
+  }
+  .kakao {
+    background: #fee500;
+    color: #000000;
+  }
+
+  .auth-modal {
+    padding: 2rem;
+    width: 34rem;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    button {
-        // 사이즈와 모양을 반영
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        height: 2.5rem;
-    }
-    .login {
-        // 로그인 #000000
-        background: #000000;
-        color: #ffffff;
-    }
-    .signup {
-        // 회원가입 border: solid 1px black;
-        background: #ffffff;
-        border: 1px solid #D9D9D9;
-    }
-    .google {
-        // 구글 #5383EC
-        background: #5383EC;
-        color: #ffffff;
-    }
-    .kakao {
-        // 카카오 #FEE500
-        background: #FEE500;
-        color: #000000;
-    }
-    
-    #login-modal {
-        padding: 2rem;
-        width: 34rem;
-        
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        border-radius: 1rem;
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-    }
+  }
 }
