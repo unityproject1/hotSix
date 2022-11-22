@@ -1,5 +1,13 @@
 <div class="overlay">
   <div id="login-modal">
+    <!-- modal header 제목: 닫기 버튼 -->
+    <div class="modal-header">
+      <div></div>
+      <h2>로그인</h2>
+      <div>
+        <span class="material-icons">close</span>
+      </div>
+    </div>
     <form action="" method="post">
       <label for="email">ID</label>
       <input
@@ -8,12 +16,12 @@
         class="input-body1"
         placeholder="username@email.com"
       />
-      <label for="password"></label>
+      <label for="password">PW</label>
       <input type="password" id="password" class="input-body1" />
-      <button>로그인</button>
-      <button>회원가입</button>
-      <button>구글 로그인</button>
-      <button>카카오 로그인</button>
+      <button class="login">로그인</button>
     </form>
+    <button class="signup">회원가입</button>
+    <button class="google">구글 로그인</button>
+    <button class="kakao">카카오 로그인</button>
   </div>
 </div>

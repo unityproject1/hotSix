@@ -1,0 +1,53 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay .modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.overlay button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  height: 2.5rem;
+}
+.overlay .login {
+  background: #000000;
+  color: #ffffff;
+}
+.overlay .signup {
+  background: #ffffff;
+  border: 1px solid #D9D9D9;
+}
+.overlay .google {
+  background: #5383EC;
+  color: #ffffff;
+}
+.overlay .kakao {
+  background: #FEE500;
+  color: #000000;
+}
+.overlay #login-modal {
+  padding: 2rem;
+  width: 34rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+.overlay #login-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}/*# sourceMappingURL=auth.css.map */
