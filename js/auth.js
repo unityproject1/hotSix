@@ -3,7 +3,7 @@
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
 
-// import { emailRegex, pwRegex } from "./util.js";
+import { emailRegex, pwRegex, $ } from "./util.js";
 // import { authService } from "./firebase.js";
 // import {
 //   createUserWithEmailAndPassword,
@@ -135,3 +135,64 @@ export const logout = () => {
       console.log("error:", error);
     });
 };
+
+/**
+ * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
+ * 컨테이너 속에 컨테이너
+ * @todo Display 변형하기
+ * 1.
+ * @todo 부모자식 -> 자매태그 변환하기
+ * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
+ * <div class="auth-container">
+ *   <div class="login-modal"></div>
+ *   <div class="signup-modal"></div>
+ *   <div class="overlay"></div>
+ * </div>
+ */
+
+$(`.overlay`).style.display = "none";
+
+/*
+자료 보존
+const $authContainer = $(`.auth-container`);
+const loginModalString = fetch(`/pages/login-modal.html`).then((data) =>
+  data.text()
+);
+const loginModalDOM = document.createElement("div");
+loginModalDOM.innerHTML = loginModalString;
+
+const signupModalHTML = fetch(`/pages/signup-modal.html`).then((data) =>
+  data.text()
+);
+const signupModalDOM = document.createElement("div");
+signupModalDOM.innerHTML = signupModalHTML;
+
+export const openPopupLogin = async (event) => {
+  // 디스플레이를 none으로 변형해야 합니다.
+  // 생성하기
+  const elem = document.createElement("div");
+  elem.innerHTML = html;
+  const html = await fetch(`/pages/login-modal.html`).then((data) =>
+    data.text()
+  );
+  $authContainer.appendChild(elem);
+};
+
+// 회원가입 모달을 그려줍니다.
+// 라우팅을 사용하지 않는 방법입니다.
+export const switchPopupSignup = async () => {
+  $authContainer.innerHTML = ``;
+  const elem = document.createElement("div");
+  elem.innerHTML = html;
+  $authContainer.appendChild(elem);
+};
+
+export const closePopup = () => {
+  $authContainer.style.display = "none";
+};
+
+*/
+
+export const closePopup = () => {};
+export const switchPopupSignup = () => {};
+export const openPopupLogin = () => {};
