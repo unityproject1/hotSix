@@ -16,8 +16,6 @@ export const route = (event) => {
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
-  login: "/pages/login-modal.html",
-  signup: "/pages/signup-modal.html",
   detail: "/pages/detail.html",
   404: "/pages/404.html",
 };

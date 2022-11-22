@@ -138,23 +138,14 @@ export const logout = () => {
 
 /**
  * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
- * 컨테이너 속에 컨테이너
- * @todo Display 변형하기
- * 1.
- * @todo 부모자식 -> 자매태그 변환하기
  * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
- * <div class="auth-container">
- *   <div class="login-modal"></div>
- *   <div class="signup-modal"></div>
- *   <div class="overlay"></div>
- * </div>
  */
 
 $(`.overlay`).style.display = "none";
 $(`.login-modal`).style.display = "none";
 $(`.signup-modal`).style.display = "none";
 
-export const openPopupLogin = (event) => {
+export const openPopupLogin = () => {
   $(`.overlay`).style.display = "block";
   $(`.login-modal`).style.display = "flex";
   $(`.signup-modal`).style.display = "none";
@@ -165,7 +156,7 @@ export const switchPopupSignup = () => {
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "flex";
 };
-export const closePopup = (event) => {
+export const closePopup = () => {
   $(`.overlay`).style.display = "none";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "none";
