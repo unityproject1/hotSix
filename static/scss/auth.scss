@@ -1,69 +1,71 @@
 .auth-container {
-  //
-}
-
-.auth-modal {
-  padding: 2rem;
-  width: 34rem;
-  z-index: 2;
-  background-color: white;
+  position: absolute;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-radius: 1rem;
-  form {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  .auth-modal {
+    padding: 2rem;
+    width: 34rem;
+    z-index: 2;
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    border-radius: 1rem;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .modal-header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn {
+      // 사이즈와 모양을 반영
+      box-sizing: border-box;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login {
+      background: #000000;
+      color: #ffffff;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #d9d9d9;
+    }
+    .google {
+      background: #5383ec;
+      color: #ffffff;
+    }
+    .kakao {
+      background: #fee500;
+      color: #000000;
+    }
   }
-  .modal-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .btn {
-    // 사이즈와 모양을 반영
-    box-sizing: border-box;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .login {
-    background: #000000;
-    color: #ffffff;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .signup {
-    background: #ffffff;
-    color: #000000;
-    border: 1px solid #d9d9d9;
-  }
-  .google {
-    background: #5383ec;
-    color: #ffffff;
-  }
-  .kakao {
-    background: #fee500;
-    color: #000000;
-  }
-}
 
-.overlay {
-  // pointer-events: none;
-  // 오버레이 중앙정렬
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.48);
-  display: none;
+  .overlay {
+    // pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.48);
+  }
 }
