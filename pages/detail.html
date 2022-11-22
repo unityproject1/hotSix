@@ -1,7 +1,4 @@
 <script>
-  function
-
-
   function modalModify() {
     $(`#modalModify`).show();
     $(`#modalDate`).show();
@@ -32,8 +29,8 @@
     $(`#modalTitle`).show();
     $(`.modalContent`).show();
   }
-<!-- 상세페이지 사진 수정 modalPicture을 Storage에 업로드 후 다운로드 링크를 받아서 photoURL에 저장.  -->
-    < !-- .modalPicture
+
+  // 상세페이지 사진 수정 modalPicture을 Storage에 업로드 후 다운로드 링크를 받아서 photoURL에 저장.
   import {
     ref,
     uploadString,
@@ -52,36 +49,38 @@
   uploadString(imgRef, imgDataUrl, "data_url");
 
   // 파일 삭제
-  deleteObject(ref(storageService, attachmentUrl)); -->
+  deleteObject(ref(storageService, attachmentUrl)); 
 </script>
 
 <div class="wrap">
   <div class="modalFirstBlack">
     <div class="modalSecondWhite">
-      <div class="modalFlex">
-        <div class="modalGrid">
-          <h1 id="modalTitle">제목</h1>
-          <input id="modalTitleInput" />
-          <button id="modalButtonModify" type="button" onclick="modalModify()">
-            수정하기
-          </button>
-          <button id="modalModify" onclick="modalModifyClose()" type=" button">
-            수정완료
-          </button>
-          <button id="modalButtonDelete" type="button">삭제</button>
-        </div>
-        <!-- 날짜 받아오기 -->
-        <div id="modalDate">2022.11.21.</div>
+      <div class="modalGrid">
+        <input id="modalTitleInput" />
+        <button id="modalButtonModify" type="button" onclick="modalModify()">
+          수정하기
+        </button>
+        <button id="modalModify" onclick="modalModifyClose()" type=" button">
+          수정완료
+        </button>
+        <button id="modalButtonDelete" type="button">삭제</button>
+      </div>
 
-        <!-- 사진 가운데 -->
-        <a href="http://species-in-pieces.com/#">
-          <img class="modalPicture" src="../static/images/example2.png" alt="춘식이" />
-        </a>
-        <!-- 본문 내용 -->
-        <div>
-          <h3 class="modalContent">본문내용 자리</h3>
-          <textarea id="contentTextarea"></textarea>
+      <div class="modalFlex">
+        <!-- 컨텐츠 부분 -->
+        <h1 id="modalTitle">제목</h1>
+        <div class="content-container">
+          <div id="modalDate">2022.11.21.</div>
+          <a href="#">
+            <img class="modalPicture" src="../static/images/example2.png" alt="춘식이" />
+          </a>
+          <div>
+            <h3 class="modalContent">본문내용 자리</h3>
+            <textarea id="contentTextarea"></textarea>
+          </div>
         </div>
+
+
       </div>
       <button type="button" class="modalButtonClose">닫기</button>
     </div>

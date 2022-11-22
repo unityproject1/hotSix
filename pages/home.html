@@ -37,37 +37,44 @@
   </div>
 </div>
 
-<!-- 모달창 -->
+<!-- detail-page -->
 <div class="modalFirstBlack">
   <div class="modalSecondWhite">
     <div class="modalFlex">
       <div class="modalGrid">
-        <h1 id="modalTitle">제목</h1>
-        <input id="modalTitleInput" />
-        <button id="modalButtonModify" type="button" onclick="modalModify()">
+        <div class="dummy-box"></div>
+        <button id="modalButtonModify" class="modal-btn update-btn" type="button" onclick="modalModify()">
           수정하기
         </button>
-        <button id="modalModify" onclick="modalModifyClose()" type=" button">
+        <button id="modalModify-completed" class="modal-btn" onclick="modalModifyClose()" type=" button">
           수정완료
         </button>
-        <button id="modalButtonDelete" type="button">삭제</button>
+        <button id="modalButtonDelete" class="modal-btn" type="button">삭제</button>
       </div>
-      <!-- 날짜 받아오기 -->
-      <div id="modalDate">2022.11.21.</div>
-
-      <!-- 사진 가운데 -->
-      <a href="http://species-in-pieces.com/#">
-        <img class="modalPicture" src="../static/images/example2.png" alt="춘식이" />
-      </a>
-      <!-- 본문 내용 -->
-      <div>
-        <h3 class="modalContent">본문내용 자리</h3>
-        <textarea id="contentTextarea"></textarea>
+      <div class="modal-container">
+        <div class="form__group field">
+          <input type="input" id="modalTitleInput" class="form__field" name="title" placeholder="title" required>
+          <label for="name" class="form__label">제목</label>
+        </div>
+        <h4 id="modalTitle">인터렉티브한 디자인 웹사이트 란 ?</h4>
+        <time id="modalDate">2022.11.21.</time>
+        <a href="#">
+          <img class="modalPicture" src="../static/images/example2.png" alt="춘식이" />
+        </a>
+        <div class="content-dsc">
+          <p class="modalContent dsc1">김종민 디벨로퍼의 "Leon Sans" 작품을 감상해보자</p>
+          <p class="modalContent dsc2">Leon Sans는 김종민이 2019년 코드로 만든 기하학적 산세리프 서체입니다. 글꼴 두께를 동적으로 변경하고 HTML5의 Canvas 요소에서
+            사용자 지정 애니메이션, 효과 또는 모양을 만들 수 있습니다. 그는
+            새로 태어난 아기 Leon을 기념하기 위해 글꼴을 디자인했습니다.</p>
+          <div class="text__grop">
+            <textarea id="contentTextarea"></textarea>
+          </div>
+        </div>
       </div>
     </div>
-    <button type="button" class="modalButtonClose" onclick="modaldown()">닫기</button>
+    <span onclick="modaldown()" class="material-symbols-outlined modalButtonClose">
+      close
+    </span>
   </div>
 </div>
-
-
 </div>
