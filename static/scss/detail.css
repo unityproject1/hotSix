@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+}
+
+.wrap {
+  width: 100vw;
+  height: 100vh;
+}
+
+.modalFirstBlack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0%;
+  background-color: rgb(74, 70, 70);
+  display: flex;
+  align-items: flex-end;
+  z-index: 4;
+}
+
+.modalSecondWhite {
+  width: 100%;
+  height: 80%;
+  background-color: white;
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  z-index: 5;
+}
+
+.modalFlex {
+  width: 40%;
+  margin: auto;
+  background-color: white;
+}
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: 80% 10% 10%;
+  height: 100px;
+}
+.modalGrid h1 {
+  text-align: left;
+  color: black;
+}
+.modalGrid button {
+  width: 60%;
+  height: 30%;
+  margin-top: 15px;
+  border: none;
+  background-color: transparent;
+  transition-duration: 0.5s;
+}
+.modalGrid button:hover {
+  transform: scale(1.4);
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+.modalGrid #modalButtonModify {
+  background-image: url("");
+  background-size: cover;
+  margin-right: -10px;
+}
+.modalGrid #modalModify {
+  background-image: url("");
+  background-size: cover;
+  margin-right: -10px;
+  display: none;
+}
+.modalGrid #modalTitleInput {
+  display: none;
+}
+.modalGrid .modalButtonDelete {
+  background-image: url("");
+  background-size: cover;
+  margin-left: -3px;
+}
+
+#contentTextarea {
+  display: none;
+}
+
+.modalButtonClose {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  border: none;
+  background-color: transparent;
+}
+.modalButtonClose:hover {
+  transform: scale(1.4);
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.modalPicture {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  margin: 10px 0px 10px 0px;
+}/*# sourceMappingURL=detail.css.map */
