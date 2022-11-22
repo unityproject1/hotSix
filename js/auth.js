@@ -151,48 +151,22 @@ export const logout = () => {
  */
 
 $(`.overlay`).style.display = "none";
+$(`.login-modal`).style.display = "none";
+$(`.signup-modal`).style.display = "none";
 
-/*
-자료 보존
-const $authContainer = $(`.auth-container`);
-const loginModalString = fetch(`/pages/login-modal.html`).then((data) =>
-  data.text()
-);
-const loginModalDOM = document.createElement("div");
-loginModalDOM.innerHTML = loginModalString;
-
-const signupModalHTML = fetch(`/pages/signup-modal.html`).then((data) =>
-  data.text()
-);
-const signupModalDOM = document.createElement("div");
-signupModalDOM.innerHTML = signupModalHTML;
-
-export const openPopupLogin = async (event) => {
-  // 디스플레이를 none으로 변형해야 합니다.
-  // 생성하기
-  const elem = document.createElement("div");
-  elem.innerHTML = html;
-  const html = await fetch(`/pages/login-modal.html`).then((data) =>
-    data.text()
-  );
-  $authContainer.appendChild(elem);
+export const openPopupLogin = (event) => {
+  $(`.overlay`).style.display = "block";
+  $(`.login-modal`).style.display = "flex";
+  $(`.signup-modal`).style.display = "none";
 };
 
-// 회원가입 모달을 그려줍니다.
-// 라우팅을 사용하지 않는 방법입니다.
-export const switchPopupSignup = async () => {
-  $authContainer.innerHTML = ``;
-  const elem = document.createElement("div");
-  elem.innerHTML = html;
-  $authContainer.appendChild(elem);
+export const switchPopupSignup = () => {
+  $(`.overlay`).style.display = "block";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "flex";
 };
-
-export const closePopup = () => {
-  $authContainer.style.display = "none";
+export const closePopup = (event) => {
+  $(`.overlay`).style.display = "none";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "none";
 };
-
-*/
-
-export const closePopup = () => {};
-export const switchPopupSignup = () => {};
-export const openPopupLogin = () => {};
