@@ -1,14 +1,19 @@
 .auth-container {
   position: absolute;
+  z-index: 1;
+  top: 3.75rem;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
   .auth-modal {
+    position: fixed;
+    top: 25%;
     padding: 2rem;
     width: 34rem;
-    z-index: 2;
+    z-index: 3;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -59,13 +64,12 @@
   }
 
   .overlay {
-    // pointer-events: none;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 3.75rem;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 2;
     background: rgba(0, 0, 0, 0.48);
   }
 }
