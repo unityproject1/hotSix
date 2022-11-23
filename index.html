@@ -62,7 +62,8 @@
                       <span class="material-icons" onclick="closePopup()">close</span>
                     </div>
                   </div>
-                  <form action="" method="post">
+                  <!-- <form action="/api/jeongik/comments" method="post"></form> -->
+                  <form action="" method="SIGN IN" onclick="handleAuth(event)">
                     <label for="login-email">ID</label>
                     <input
                       type="email"
@@ -72,7 +73,7 @@
                     />
                     <label for="login-password">PW</label>
                     <input type="password" id="login-password" class="input-body1" />
-                    <input type="submit" class="login btn" value="로그인"></input>
+                    <input type="submit" id="authBtn" class="login btn" value="로그인" />
                   </form>
                   <div onclick="switchPopupSignup()" class="signup btn"> 회원가입 </div>
                   <a class="google btn">구글 로그인</a>
@@ -86,7 +87,7 @@
                       <span class="material-icons" onclick="closePopup()">close</span>
                     </div>
                   </div>
-                  <form action="" method="post">
+                  <form action="" method="SIGN IN" onclick="handleAuth(event)">
                     <label for="signup-email">ID</label>
                     <input
                       type="email"
@@ -99,7 +100,7 @@
                     <!-- 비밀번호가 위 input이랑 일치하는지 확인합니다. -->
                     <label for="password-confirm">PW confirm</label>
                     <input type="password" id="password-confirm" class="input-body1" />
-                    <input type="submit" class="login btn" value="회원가입"></input>
+                    <input type="submit" class="login btn" value="회원가입" />
                   </form>
             </div>
             <div class="overlay" onclick="closePopup()"></div>

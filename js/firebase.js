@@ -2,7 +2,7 @@
  * 모듈 완성
  * 어드민 공용 ID입니다.
  * adminID: hotsix-admin@ruu.kr
- * adminPW: 123456879
+ * adminPW: 123!@#asd
  * @see https://github.com/unityproject1/hotSix/wiki
  *
  * 구현관련해서는 아래 링크를 참조하기 바랍니다.

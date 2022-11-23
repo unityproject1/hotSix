@@ -4,32 +4,32 @@
  */
 
 import { emailRegex, pwRegex, $ } from "./util.js";
-// import { authService } from "./firebase.js";
-// import {
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   GoogleAuthProvider,
-//   signInWithPopup,
-//   GithubAuthProvider,
-//   signOut,
-// } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+import { authService } from "./firebase.js";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
-  const email = document.getElementById("email");
+  const email = document.getElementById("login-email");
   const emailVal = email.value;
-  const pw = document.getElementById("pw");
+  const pw = document.getElementById("login-password");
   const pwVal = pw.value;
 
   // 유효성 검사 진행
   if (!emailVal) {
-    alert("이메일을 입력해 주세요");
+    // alert("이메일을 입력해 주세요");
     email.focus();
     return;
   }
   if (!pwVal) {
-    alert("비밀번호를 입력해 주세요");
+    // alert("비밀번호를 입력해 주세요");
     pw.focus();
     return;
   }
@@ -57,7 +57,7 @@ export const handleAuth = (event) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        window.location.hash = "#fanLog";
+        closePopup(); // 라우트 위치는 그대로 두고 modal을 닫습니다.
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -70,11 +70,13 @@ export const handleAuth = (event) => {
         }
       });
   } else {
+    confirm.log;
     // 회원가입 버튼 클릭의 경우
     createUserWithEmailAndPassword(authService, emailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         console.log("회원가입 성공!");
+        closePopup();
         // const user = userCredential.user;
       })
       .catch((error) => {
@@ -84,22 +86,6 @@ export const handleAuth = (event) => {
           alert("이미 가입된 이메일입니다.");
         }
       });
-  }
-};
-
-// 로그인, 회원가입 화면 토글링 기능
-export const onToggle = () => {
-  const authBtn = document.querySelector("#authBtn");
-  const authToggle = document.querySelector("#authToggle");
-  const authTitle = document.querySelector("#authTitle");
-  if (authBtn.value === "로그인") {
-    authBtn.value = "회원가입";
-    authToggle.textContent = "로그인 화면으로";
-    authTitle.textContent = "회원가입 페이지";
-  } else {
-    authBtn.value = "로그인";
-    authToggle.textContent = "회원가입 화면으로";
-    authTitle.textContent = "로그인 페이지";
   }
 };
 
@@ -138,6 +124,7 @@ export const logout = () => {
 
 /**
  * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
+ * function 키워드를 사용하는 것으로 호이스팅 시킵니다.
  * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
  */
 
@@ -145,28 +132,28 @@ $(`.overlay`).style.display = "none";
 $(`.login-modal`).style.display = "none";
 $(`.signup-modal`).style.display = "none";
 
-export const openPopupLogin = () => {
+export function openPopupLogin() {
   document.body.style = `overflow: hidden`;
 
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
   $(`.signup-modal`).style.display = "none";
-};
+}
 
-export const switchPopupSignup = () => {
+export function switchPopupSignup() {
   document.body.style = `overflow: hidden`;
 
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "flex";
-};
-export const closePopup = () => {
+}
+export function closePopup() {
   document.body.style = `overflow: auto`;
 
   $(`.overlay`).style.display = "none";
   $(`.auth-container`).style.display = "none";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "none";
-};
+}

@@ -6,7 +6,12 @@
 
 import { onFileChange } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
-import { openPopupLogin, closePopup, switchPopupSignup } from "./js/auth.js";
+import {
+  openPopupLogin,
+  closePopup,
+  switchPopupSignup,
+  handleAuth,
+} from "./js/auth.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 
@@ -14,10 +19,22 @@ document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또
 
 // 전역 함수 리스트
 window.route = route;
+// 프로필
 window.onFileChange = onFileChange;
+// window.changeProfile = changeProfile;
+// 로그인 & 회원가입
+window.handleAuth = handleAuth;
+// window.socialLogin = socialLogin;
+// window.logout = logout;
+// auth popup
 window.openPopupLogin = openPopupLogin;
 window.switchPopupSignup = switchPopupSignup;
 window.closePopup = closePopup;
+// CRUD
+// window.save_comment = save_comment;
+// window.update_comment = update_comment;
+// window.onEditing = onEditing;
+// window.delete_comment = delete_comment;
 
 /**
  * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.
