@@ -14,18 +14,71 @@ import {
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
+/**
+ * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
+ * function 키워드를 사용하는 것으로 호이스팅 시킵니다.
+ * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
+ */
+
+/**
+ * 이 변수는 로그인/회원가입 경로를 관리하는 State입니다.
+ */
+let authRouteLogin = null;
+
+$(`.overlay`).style.display = "none";
+$(`.login-modal`).style.display = "none";
+$(`.signup-modal`).style.display = "none";
+
+export const openPopupLogin = () => {
+  document.body.style = `overflow: hidden`;
+  authRouteLogin = true; // 사용자는 로그인 모달로 접근했습니다.
+  console.log(authRouteLogin);
+  $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
+  $(`.login-modal`).style.display = "flex";
+  $(`.signup-modal`).style.display = "none";
+};
+
+export const switchPopupSignup = () => {
+  document.body.style = `overflow: hidden`;
+  authRouteLogin = false; // 사용자는 회원가입 모달로 접근했습니다.
+  console.log(authRouteLogin);
+  $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "flex";
+};
+export const closePopup = () => {
+  document.body.style = `overflow: auto`;
+  authRouteLogin = false;
+  console.log(authRouteLogin);
+  $(`.overlay`).style.display = "none";
+  $(`.auth-container`).style.display = "none";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "none";
+};
+
+/**
+ *
+ * @param {*} event
+ * @returns
+ */
+
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
+  console.log(authRouteLogin);
   const email = document.getElementById("login-email");
   const emailVal = email.value;
   const pw = document.getElementById("login-password");
   const pwVal = pw.value;
 
   // 유효성 검사 진행
+  /**
+   * @todo DOM 조작으로 사용자에게 피드백을 줍시다.
+   */
   if (!emailVal) {
     // alert("이메일을 입력해 주세요");
-    // DOM 조작으로 사용자에게 피드백을 줍시다.
     email.focus();
     return;
   }
@@ -50,11 +103,11 @@ export const handleAuth = (event) => {
   }
 
   // 유효성 검사 통과 후 로그인 또는 회원가입 API 요청
-  const authBtnText = document.querySelector("#authBtn").value; // 버튼의 텍스트 상태를 기준으로 로그인 혹은 회원가입을 결정하고 있습니다.
-  // 제출버튼의 value를 기준으로 선택할 수 있어야 합니다.
-  if (authBtnText === "로그인") {
-    // 유효성검사 후 로그인 성공 시 팬명록 화면으로
 
+  // 제출버튼의 value를 기준으로 선택할 수 있어야 합니다.
+  if (authRouteLogin === true) {
+    // 유효성검사 후 로그인 성공 시 팬명록 화면으로
+    console.log("login");
     signInWithEmailAndPassword(authService, emailVal, pwVal)
       .then((userCredential) => {
         // Signed in
@@ -72,14 +125,14 @@ export const handleAuth = (event) => {
         }
       });
   } else {
-    confirm.log("create id");
     // 회원가입 버튼 클릭의 경우
+    console.log("create id");
     createUserWithEmailAndPassword(authService, emailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         console.log("회원가입 성공!");
+        console.log(userCredential);
         closePopup();
-        // const user = userCredential.user;
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -123,39 +176,3 @@ export const logout = () => {
       console.log("error:", error);
     });
 };
-
-/**
- * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
- * function 키워드를 사용하는 것으로 호이스팅 시킵니다.
- * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
- */
-
-$(`.overlay`).style.display = "none";
-$(`.login-modal`).style.display = "none";
-$(`.signup-modal`).style.display = "none";
-
-export function openPopupLogin() {
-  document.body.style = `overflow: hidden`;
-
-  $(`.overlay`).style.display = "block";
-  $(`.auth-container`).style.display = "flex";
-  $(`.login-modal`).style.display = "flex";
-  $(`.signup-modal`).style.display = "none";
-}
-
-export function switchPopupSignup() {
-  document.body.style = `overflow: hidden`;
-
-  $(`.overlay`).style.display = "block";
-  $(`.auth-container`).style.display = "flex";
-  $(`.login-modal`).style.display = "none";
-  $(`.signup-modal`).style.display = "flex";
-}
-export function closePopup() {
-  document.body.style = `overflow: auto`;
-
-  $(`.overlay`).style.display = "none";
-  $(`.auth-container`).style.display = "none";
-  $(`.login-modal`).style.display = "none";
-  $(`.signup-modal`).style.display = "none";
-}
