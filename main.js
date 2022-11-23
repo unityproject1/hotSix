@@ -6,6 +6,7 @@
 
 import { onFileChange } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
+import { openPopupLogin, closePopup, switchPopupSignup } from "./js/auth.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 
@@ -14,6 +15,9 @@ document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또
 // 전역 함수 리스트
 window.route = route;
 window.onFileChange = onFileChange;
+window.openPopupLogin = openPopupLogin;
+window.switchPopupSignup = switchPopupSignup;
+window.closePopup = closePopup;
 
 /**
  * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.

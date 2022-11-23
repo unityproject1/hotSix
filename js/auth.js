@@ -3,7 +3,7 @@
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
 
-// import { emailRegex, pwRegex } from "./util.js";
+import { emailRegex, pwRegex, $ } from "./util.js";
 // import { authService } from "./firebase.js";
 // import {
 //   createUserWithEmailAndPassword,
@@ -134,4 +134,39 @@ export const logout = () => {
       // An error happened.
       console.log("error:", error);
     });
+};
+
+/**
+ * 여기서부터는 auth modal의 interaction에 대한 부분입니다.
+ * @see https://hansea.tistory.com/entry/modal-close-%EB%AA%A8%EB%8B%AC%EC%B0%BD-%EB%8B%AB%EB%8A%94-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
+ */
+
+$(`.overlay`).style.display = "none";
+$(`.login-modal`).style.display = "none";
+$(`.signup-modal`).style.display = "none";
+
+export const openPopupLogin = () => {
+  document.body.style = `overflow: hidden`;
+
+  $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
+  $(`.login-modal`).style.display = "flex";
+  $(`.signup-modal`).style.display = "none";
+};
+
+export const switchPopupSignup = () => {
+  document.body.style = `overflow: hidden`;
+
+  $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "flex";
+};
+export const closePopup = () => {
+  document.body.style = `overflow: auto`;
+
+  $(`.overlay`).style.display = "none";
+  $(`.auth-container`).style.display = "none";
+  $(`.login-modal`).style.display = "none";
+  $(`.signup-modal`).style.display = "none";
 };
