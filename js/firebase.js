@@ -1,4 +1,5 @@
 /**
+ * 모듈 완성
  * 어드민 공용 ID입니다.
  * adminID: hotsix-admin@ruu.kr
  * adminPW: 123456879

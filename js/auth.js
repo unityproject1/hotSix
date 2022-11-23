@@ -1,5 +1,5 @@
 /**
- * 미완성
+ * 모듈 미완성
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
 
