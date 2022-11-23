@@ -63,7 +63,7 @@
             <span class="material-icons" onclick="closePopup()">close</span>
           </div>
         </div>
-        <form action="" method="SIGN IN" onclick="handleAuth(event)">
+        <form action="" method="SIGN IN" onsubmit="handleAuth(event)">
           <label for="login-email">ID</label>
           <input type="email" id="login-email" class="input-body1" placeholder="username@email.com" />
           <label for="login-password">PW</label>
@@ -82,14 +82,14 @@
             <span class="material-icons" onclick="closePopup()">close</span>
           </div>
         </div>
-        <form action="" method="SIGN UP" onclick="handleAuth(event)">
+        <form action="" method="SIGN UP" onsubmit="handleAuth(event)">
           <label for="signup-email">ID</label>
           <input type="email" id="signup-email" class="input-body1" placeholder="username@email.com" />
           <label for="signup-password">PW</label>
           <input type="password" id="signup-password" class="input-body1" />
           <!-- 비밀번호가 위 input이랑 일치하는지 확인합니다. -->
           <!-- <label for="password-confirm">PW confirm</label>
-                    <input type="password" id="password-confirm" class="input-body1" /> -->
+          <input type="password" id="password-confirm" class="input-body1" /> -->
           <input type="submit" class="login btn" value="회원가입" />
         </form>
       </div>
