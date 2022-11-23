@@ -112,7 +112,13 @@
   padding: 10px;
   color: #8b95a1;
 }
-.modal-container .modalPicture {
+.modal-container .img-container {
+  width: 100%;
+}
+.modal-container .img-container #img-input {
+  display: none;
+}
+.modal-container .img-container #modalPicture {
   margin-top: 30px;
   text-align: center;
   width: 100%;
@@ -252,38 +258,4 @@
 .text__grop #contentTextarea:focus {
   -o-border-image: linear-gradient(to right, #3f3f3f, #030303);
      border-image: linear-gradient(to right, #3f3f3f, #030303);
-}
-
-.content-container {
-  margin: 4rem 0 8rem;
-}
-.content-container #container {
-  width: 45rem;
-  margin: 4.5rem auto 0;
-  padding: 0 2.5rem;
-  min-height: 100vh;
-}
-.content-container #container #modalPicture {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-.content-container #container label {
-  width: 10rem;
-}
-.content-container #container #img-input {
-  display: none;
-}
-.content-container .my-article-section-title {
-  margin: 0 0 2rem;
-}
-
-#uplord {
-  width: 30%;
-  height: 50%;
-  border-radius: 10px;
-  margin: 10px 0px 10px 0px;
-  display: none;
 }/*# sourceMappingURL=detail.css.map */

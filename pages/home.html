@@ -4,11 +4,9 @@
 
 <div class="card-container" href="#detail" onclick="modalup(event)">
   <div class="content-box">
-    <img
-      class="content-img"
+    <img class="content-img"
       src="http://blog.cmiscm.com/wp-content/uploads/2019/08/2019-08-29-10-56-12.2019-08-29-10_58_56.gif"
-      alt="멸종위기동물사이트"
-    />
+      alt="멸종위기동물사이트" />
     <span>인터렉티브 사이트</span>
     <h4>인터렉티브한 디자인 웹사이트 란 ?</h4>
     <p>김종민 디벨로퍼의 "Leon Sans" 작품을 감상해보자</p>
@@ -18,11 +16,7 @@
 
 <div class="card-container" href="#detail_2" onclick="modalup()">
   <div class="content-box">
-    <img
-      class="content-img"
-      src="./static/images/example.png"
-      alt="멸종위기동물사이트"
-    />
+    <img class="content-img" src="./static/images/example.png" alt="멸종위기동물사이트" />
     <span>인터렉티브 사이트</span>
     <h4>멸종 위기 동물들을 볼수있는 사이트?</h4>
     <p>
@@ -35,11 +29,7 @@
 
 <div class="card-container" href="#detail_3" onclick="modalup()">
   <div class="content-box">
-    <img
-      class="content-img"
-      src="./static/images/example2.png"
-      alt="멸종위기동물사이트"
-    />
+    <img class="content-img" src="./static/images/example2.png" alt="멸종위기동물사이트" />
     <span>인터렉티브 사이트</span>
     <h4>춘식이의 일기: 라이언은 하루종일 뭘 할까?</h4>
     <p>춘식이의 시점으로 3d로 표현된 라이언의 하루를 경험할수있다.</p>
@@ -50,10 +40,7 @@
 <!-- detail-page -->
 <div class="modalFirstBlack">
   <div class="modal-side" onclick="modaldown()">
-    <span
-      onclick="modaldown()"
-      class="material-symbols-outlined modalButtonClose"
-    >
+    <span onclick="modaldown()" class="material-symbols-outlined modalButtonClose">
       close
     </span>
   </div>
@@ -61,20 +48,10 @@
     <div class="modalFlex">
       <div class="modalGrid">
         <div class="dummy-box"></div>
-        <button
-          id="modalButtonModify"
-          class="modal-btn update-btn"
-          type="button"
-          onclick="modalModify()"
-        >
+        <button id="modalButtonModify" class="modal-btn update-btn" type="button" onclick="modalModify()">
           수정하기
         </button>
-        <button
-          id="modalModify-completed"
-          class="modal-btn"
-          onclick="modalModifyClose()"
-          type=" button"
-        >
+        <button id="modalModify-completed" class="modal-btn" onclick="modalModifyClose()" type=" button">
           수정완료
         </button>
         <button id="modalButtonDelete" class="modal-btn" type="button">
@@ -83,40 +60,21 @@
       </div>
       <div class="modal-container">
         <div class="form__group field">
-          <input
-            type="input"
-            id="modalTitleInput"
-            class="form__field"
-            name="title"
-            placeholder="title"
-            required
-          />
+          <input type="input" id="modalTitleInput" class="form__field" name="title" placeholder="title" required />
           <label for="" class="form__label">제목</label>
         </div>
         <h4 id="modalTitle">인터렉티브한 디자인 웹사이트 란 ?</h4>
         <time id="modalDate">2022.11.21.</time>
-        <div id="container">
+
+        <div class="img-container" style="pointer-events: none;">
           <form id="uplord" onsubmit="">
             <!-- https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/pages/profile.html -->
             <label for="img-input">
-              <h1 class="font-h2" id="modal-uplord">사진 수정</h1>
-              <input
-                onchange="modalFileChange(event)"
-                id="img-input"
-                type="file"
-                accept="images/*"
-              />
+              <img id="modalPicture" src="../static/images/example2.png" alt="content-img" />
+              <input onchange="modalFileChange(event)" id="img-input" type="file" accept="images/*" />
             </label>
           </form>
-          <div onchange="modalFileChange(event)">
-            <a href="#">
-              <img
-                id="modalPicture"
-                src="../static/images/example2.png"
-                alt="춘식이"
-              />
-            </a>
-          </div>
+
         </div>
         <div class="content-dsc">
           <p class="modalContent dsc1">

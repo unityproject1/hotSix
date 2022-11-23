@@ -9,6 +9,7 @@ export function modalModify() {
   $(`.modalContent`).hide();
   $(`#modalDate`).hide();
   $(`#uplord`).show();
+  $(".img-container").css("pointer-events", "auto");
   //타이틀 변경 요소 보이기
   $(`.form__group`).show();
   // 내용 변경 요소 보이기
@@ -25,7 +26,9 @@ export function modalModifyClose() {
   let modifiedContent = $(`#contentTextarea`).val();
   console.log(modifiedContent);
   $(`#modalButtonModify`).show();
-  $(`#uplord`).hide();
+
+  $(".img-container").css("pointer-events", "none");
+
   // 내용 변경 숨기기
   $(`.text__grop`).hide();
   // 타이틀 변경 숨기기
