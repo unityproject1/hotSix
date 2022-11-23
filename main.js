@@ -12,6 +12,7 @@ import {
   closePopup,
   switchPopupSignup,
   handleAuth,
+  logout,
 } from "./js/auth.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
@@ -38,7 +39,7 @@ window.onFileChange = onFileChange;
 // 로그인 & 회원가입
 window.handleAuth = handleAuth;
 // window.socialLogin = socialLogin;
-// window.logout = logout;
+window.logout = logout;
 // auth popup
 window.openPopupLogin = openPopupLogin;
 window.switchPopupSignup = switchPopupSignup;

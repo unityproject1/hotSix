@@ -57,6 +57,9 @@ export const closePopup = () => {
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "none";
 };
+// 로그인 nav 변수
+let logInEl = document.querySelector("#login");
+let logOutEl = document.querySelector("#logout");
 
 /**
  *
@@ -111,7 +114,11 @@ export const handleAuth = (event) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log("user=", user);
         closePopup(); // 라우트 위치는 그대로 두고 modal을 닫습니다.
+
+        logInEl.style.display = "none";
+        logOutEl.style.display = "block";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -169,9 +176,14 @@ export const logout = () => {
       // Sign-out successful.
       localStorage.clear();
       console.log("로그아웃 성공");
+      let logInEl = document.querySelector("#login");
+      logInEl.style.display = "block";
+      logOutEl.style.display = "none";
     })
     .catch((error) => {
       // An error happened.
       console.log("error:", error);
     });
 };
+
+// 로그인 했을때 로그인에 따라 맞는 nav 메뉴 변경

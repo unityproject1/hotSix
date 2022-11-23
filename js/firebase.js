@@ -19,12 +19,12 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-s
  * @see https://console.firebase.google.com/project/elevated-glow-332304/settings/general/web:Njc0MmI1NDYtMGNhNS00NTZhLWEzMzctZjgxMDcxMjEwMDdh
  */
 const firebaseConfig = {
-  apiKey: "AIzaSyD1BvEIkVvOBmcx405Al9scSfIAjRQo2UA",
-  authDomain: "elevated-glow-332304.firebaseapp.com",
-  projectId: "elevated-glow-332304",
-  storageBucket: "elevated-glow-332304.appspot.com",
-  messagingSenderId: "330312765599",
-  appId: "1:330312765599:web:1c08f8355d3848779912aa",
+  apiKey: "AIzaSyBZMpefYHVqPxcHA-oqjRCiwKyDGUUqSMA",
+  authDomain: "test-a9c68.firebaseapp.com",
+  projectId: "test-a9c68",
+  storageBucket: "test-a9c68.appspot.com",
+  messagingSenderId: "1075807377391",
+  appId: "1:1075807377391:web:7337ec3a7e7b96f88a081a",
 };
 
 // Initialize Firebase
