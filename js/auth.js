@@ -149,6 +149,7 @@ export const openPopupLogin = () => {
   document.body.style = `overflow: hidden`;
 
   $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
   $(`.signup-modal`).style.display = "none";
 };
@@ -157,6 +158,7 @@ export const switchPopupSignup = () => {
   document.body.style = `overflow: hidden`;
 
   $(`.overlay`).style.display = "block";
+  $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "flex";
 };
@@ -164,6 +166,7 @@ export const closePopup = () => {
   document.body.style = `overflow: auto`;
 
   $(`.overlay`).style.display = "none";
+  $(`.auth-container`).style.display = "none";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "none";
 };
