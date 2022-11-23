@@ -68,39 +68,38 @@ export const closePopup = () => {
 export const handleAuth = (event) => {
   event.preventDefault();
   console.log(authRouteLogin);
-  const email = document.getElementById("login-email");
-  const emailVal = email.value;
-  const pw = document.getElementById("login-password");
-  const pwVal = pw.value;
-
+  const loginEmailVal = $(`#login-email`).value;
+  const pwVal = $(`#login-password`).value;
+  const signupEmailVal = $(`#signup-email`).value;
+  const signupPwVal = $(`#signup-password`).value;
   // 유효성 검사 진행
   /**
    * @todo DOM 조작으로 사용자에게 피드백을 줍시다.
    */
-  if (!emailVal) {
-    // alert("이메일을 입력해 주세요");
-    email.focus();
-    return;
-  }
-  if (!pwVal) {
-    // alert("비밀번호를 입력해 주세요");
-    pw.focus();
-    return;
-  }
+  // if (!loginEmailVal) {
+  //   // alert("이메일을 입력해 주세요");
+  //   loginEmailVal.focus();
+  //   return;
+  // }
+  // if (!pwVal) {
+  //   // alert("비밀번호를 입력해 주세요");
+  //   pwVal.focus();
+  //   return;
+  // }
 
-  const matchedEmail = emailVal.match(emailRegex);
-  const matchedPw = pwVal.match(pwRegex);
+  // const matchedEmail = loginEmailVal.match(emailRegex);
+  // const matchedPw = pwVal.match(pwRegex);
 
-  if (matchedEmail === null) {
-    alert("이메일 형식에 맞게 입력해 주세요");
-    email.focus();
-    return;
-  }
-  if (matchedPw === null) {
-    alert("비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.");
-    pw.focus();
-    return;
-  }
+  // if (matchedEmail === null) {
+  //   alert("이메일 형식에 맞게 입력해 주세요");
+  //   loginEmailVal.focus();
+  //   return;
+  // }
+  // if (matchedPw === null) {
+  //   alert("비밀번호는 8자리 이상 영문자, 숫자, 특수문자 조합이어야 합니다.");
+  //   pwVal.focus();
+  //   return;
+  // }
 
   // 유효성 검사 통과 후 로그인 또는 회원가입 API 요청
 
@@ -108,7 +107,7 @@ export const handleAuth = (event) => {
   if (authRouteLogin === true) {
     // 유효성검사 후 로그인 성공 시 팬명록 화면으로
     console.log("login");
-    signInWithEmailAndPassword(authService, emailVal, pwVal)
+    signInWithEmailAndPassword(authService, loginEmailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -127,7 +126,7 @@ export const handleAuth = (event) => {
   } else {
     // 회원가입 버튼 클릭의 경우
     console.log("create id");
-    createUserWithEmailAndPassword(authService, emailVal, pwVal)
+    createUserWithEmailAndPassword(authService, signupEmailVal, signupPwVal)
       .then((userCredential) => {
         // Signed in
         console.log("회원가입 성공!");
