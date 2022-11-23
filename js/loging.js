@@ -2,6 +2,9 @@
  * 미완성
  * 이 모듈은 사용자의 행동을 DB에 저장합니다.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/fanLog.js
+ *
+ * CRUD 관련 파이어 베이스 공식문서
+ * @see https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0
  */
 import {
   doc,
