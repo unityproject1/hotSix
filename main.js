@@ -13,6 +13,7 @@ import {
   switchPopupSignup,
   handleAuth,
   logout,
+  socialLogin,
 } from "./js/auth.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
@@ -33,17 +34,21 @@ authService.onAuthStateChanged((user) => {
 
 // 전역 함수 리스트
 window.route = route;
+
 // 프로필
 window.onFileChange = onFileChange;
 // window.changeProfile = changeProfile;
+
 // 로그인 & 회원가입
 window.handleAuth = handleAuth;
-// window.socialLogin = socialLogin;
+window.socialLogin = socialLogin;
 window.logout = logout;
+
 // auth popup
 window.openPopupLogin = openPopupLogin;
 window.switchPopupSignup = switchPopupSignup;
 window.closePopup = closePopup;
+
 // CRUD
 // window.save_comment = save_comment;
 // window.update_comment = update_comment;

@@ -1,5 +1,6 @@
 /**
  * 미완성
+ * 이 모듈은 사용자의 행동을 DB에 저장합니다.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/fanLog.js
  */
 // import {
