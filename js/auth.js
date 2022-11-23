@@ -155,8 +155,8 @@ export const socialLogin = (event) => {
   let provider;
   if (name === "google") {
     provider = new GoogleAuthProvider();
-  } else if (name === "kakao") {
-    // provider = new GithubAuthProvider();
+  } else if (name === "github") {
+    provider = new GithubAuthProvider();
     // TODO kakao AuthProvider 추가하기
     console.log("깃헙 로그인 시도");
   }
