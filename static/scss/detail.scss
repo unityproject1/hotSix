@@ -280,6 +280,40 @@ $gray: #9b9b9b;
   }
 }
 
+.content-container {
+  margin: 4rem 0 8rem;
+  #container {
+    width: 45rem;
+    margin: 4.5rem auto 0;
+    padding: 0 2.5rem;
+    min-height: 100vh;
+
+    #modalPicture {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    label {
+      // img input의 클릭영역과 가시영역을 일치시킵니다.
+      width: 10rem;
+    }
+    #img-input {
+      display: none;
+    }
+  }
+  .my-article-section-title {
+    margin: 0 0 2rem;
+  }
+}
+#uplord {
+  width: 30%;
+  height: 50%;
+  border-radius: 10px;
+  margin: 10px 0px 10px 0px;
+  display: none;
+}
+
 // .content-container {
 //   margin: 4rem 0 8rem;
 //   #container {
