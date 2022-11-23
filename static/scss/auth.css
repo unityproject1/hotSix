@@ -3,7 +3,7 @@
   z-index: 1;
   top: 3.75rem;
   left: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 100vh;
