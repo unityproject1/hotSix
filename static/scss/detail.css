@@ -1,16 +1,35 @@
 .modalFirstBlack {
   position: fixed;
-  top: 100vh;
   left: 0;
   width: 100%;
   height: 100%;
   margin: 0%;
-  transition: 0.3s;
-  background-color: transparent;
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
-  z-index: 4;
-  top: 0px;
+  z-index: 20;
+  overflow-y: hidden;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-side {
+  width: 100%;
+  height: 10%;
+  cursor: pointer;
+}
+
+.visible {
+  top: 0vh;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: all 0.2s cubic-bezier(0.2, -0.01, 0, 1.02);
+}
+
+.hide {
+  opacity: 0;
+  transition: all 0.2s cubic-bezier(0.2, -0.01, 0, 1.02);
 }
 
 .modalSecondWhite {
@@ -19,7 +38,7 @@
   height: 90%;
   background-color: white;
   border-radius: 16px 16px 0px 0px;
-  z-index: 5;
+  z-index: 25;
   border: 0.5px solid #333d4b;
   overflow-y: auto;
 }
@@ -114,11 +133,18 @@
 
 .modalButtonClose {
   position: absolute;
-  right: 10px;
-  top: 15px;
+  right: 8px;
+  top: 60px;
+  width: 24px;
+  height: 24px;
   border: none;
-  background-color: transparent;
+  color: #dbdbde;
   cursor: pointer;
+  transition: all 0.7s;
+}
+
+.modalButtonClose:hover {
+  color: white;
 }
 
 .modalPicture {
@@ -206,11 +232,15 @@
 }
 
 .text__grop {
+  display: none;
   width: 100%;
 }
-
-#contentTextarea {
-  display: none;
+.text__grop .content-label {
+  font-size: 1rem;
+  color: #9b9b9b;
+  padding-bottom: 20px;
+}
+.text__grop #contentTextarea {
   padding: 20px;
   width: 100%;
   max-width: 400px;
@@ -219,44 +249,7 @@
   font-size: 1rem;
   border-radius: 5px;
 }
-
-#contentTextarea:focus {
+.text__grop #contentTextarea:focus {
   -o-border-image: linear-gradient(to right, #3f3f3f, #030303);
      border-image: linear-gradient(to right, #3f3f3f, #030303);
-}
-
-.content-container {
-  margin: 4rem 0 8rem;
-}
-.content-container #container {
-  width: 45rem;
-  margin: 4.5rem auto 0;
-  padding: 0 2.5rem;
-  min-height: 100vh;
-}
-.content-container #container #profile {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 3.5rem;
-  gap: 24px;
-}
-.content-container #container #profile #Profile-img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
-}
-.content-container #container #profile label {
-  width: 10rem;
-}
-.content-container #container #profile #img-input {
-  display: none;
-}
-.content-container #container .my-article-section-title {
-  margin: 0 0 2rem;
-}
-
-#contentTextarea {
-  width: 100%;
 }/*# sourceMappingURL=detail.css.map */

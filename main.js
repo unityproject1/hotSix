@@ -6,7 +6,13 @@
 
 import { onFileChange } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
-import { modalModify, modalModifyClose, modalup,modaldown, modalFileChange} from "./js/detail.js";
+import {
+  modalModify,
+  modalModifyClose,
+  modalup,
+  modaldown,
+  modalFileChange,
+} from "./js/detail.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또는 새로고침 시 처리
@@ -19,7 +25,6 @@ window.modalModifyClose = modalModifyClose;
 window.modalup = modalup;
 window.modaldown = modaldown;
 window.modalFileChange = modalFileChange;
-
 
 /**
  * 여기서부터는 스타일링과 관련된 자바스크립만 작성합니다.
@@ -39,3 +44,7 @@ const progressBar = () => {
 window.onscroll = function () {
   progressBar();
 };
+
+// document.querySelector(".modalFirstBlack").addEventListener("click", (e) => {
+//   console.log(e.target);
+// });

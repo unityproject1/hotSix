@@ -8,10 +8,11 @@ export function modalModify() {
   $(`#modalTitle`).hide();
   $(`.modalContent`).hide();
   $(`#modalDate`).hide();
-  //타이틀 변경 요소 숨기기
+  //타이틀 변경 요소 보이기
   $(`.form__group`).show();
+  // 내용 변경 요소 보이기
+  $(`.text__grop`).show();
 
-  $(`#contentTextarea`).show();
   $(`#modalTitleInput`).attr("value", `${modifiedTitle}`);
   $(`#contentTextarea`).val(modifiedContent);
 }
@@ -23,11 +24,11 @@ export function modalModifyClose() {
   let modifiedContent = $(`#contentTextarea`).val();
   console.log(modifiedContent);
   $(`#modalButtonModify`).show();
-  $(`#contentTextarea`).hide();
+  // 내용 변경 숨기기
+  $(`.text__grop`).hide();
 
-  // 타이틀 변경
+  // 타이틀 변경 숨기기
   $(`.form__group`).hide();
-
   $(`#modalTitle`).text(modifiedTitle);
   $(`.modalContent`).text(modifiedContent);
   $(`#modalTitle`).show();
@@ -42,6 +43,9 @@ export function modalup() {
       width: 100%;
       `;
   $(`.modalFirstBlack`).css(`top`, "0vh");
+
+  $(`.modalFirstBlack`).addClass("visible");
+  $(`.modalFirstBlack`).removeClass("hide");
 }
 
 export function modaldown() {
@@ -49,6 +53,9 @@ export function modaldown() {
   document.body.style.cssText = ``;
   window.scrollTo(0, parseInt(scrollY) * -1);
   $(`.modalFirstBlack`).css(`top`, `100vh`);
+
+  $(`.modalFirstBlack`).addClass("hide");
+  $(`.modalFirstBlack`).removeClass("visible");
 }
 
 export const modalFileChange = (event) => {
@@ -62,3 +69,4 @@ export const modalFileChange = (event) => {
     document.getElementById("Profile-img").src = imgDataUrl;
   };
 };
+
