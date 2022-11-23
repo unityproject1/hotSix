@@ -35,7 +35,6 @@ export function modalModifyClose() {
 }
 
 export function modalup() {
-  console.log("hi");
   document.body.style.cssText = `
       position: fixed; 
       top: -${window.scrollY}px;
@@ -51,7 +50,7 @@ export function modaldown() {
   window.scrollTo(0, parseInt(scrollY) * -1);
   $(`.modalFirstBlack`).css(`top`, `100vh`);
 }
-isupdate = t
+
 export const modalFileChange = (event) => {
   const uploadedFile = event.target.files[0];
   /** @see https://developer.mozilla.org/ko/docs/Web/API/FileReader */
