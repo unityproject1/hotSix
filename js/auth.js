@@ -25,6 +25,7 @@ export const handleAuth = (event) => {
   // 유효성 검사 진행
   if (!emailVal) {
     // alert("이메일을 입력해 주세요");
+    // DOM 조작으로 사용자에게 피드백을 줍시다.
     email.focus();
     return;
   }
@@ -49,7 +50,8 @@ export const handleAuth = (event) => {
   }
 
   // 유효성 검사 통과 후 로그인 또는 회원가입 API 요청
-  const authBtnText = document.querySelector("#authBtn").value;
+  const authBtnText = document.querySelector("#authBtn").value; // 버튼의 텍스트 상태를 기준으로 로그인 혹은 회원가입을 결정하고 있습니다.
+  // 제출버튼의 value를 기준으로 선택할 수 있어야 합니다.
   if (authBtnText === "로그인") {
     // 유효성검사 후 로그인 성공 시 팬명록 화면으로
 
@@ -70,7 +72,7 @@ export const handleAuth = (event) => {
         }
       });
   } else {
-    confirm.log;
+    confirm.log("create id");
     // 회원가입 버튼 클릭의 경우
     createUserWithEmailAndPassword(authService, emailVal, pwVal)
       .then((userCredential) => {
