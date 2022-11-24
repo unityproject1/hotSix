@@ -186,17 +186,14 @@ export const logout = () => {
 
 // 로그인 했을때 로그인에 따라 맞는 nav 메뉴 변경
 authService.onAuthStateChanged((user) => {
-  // Firebase 연결되면 화면 표시
   // user === authService.currentUser 와 같은 값
-  // 로그인 상태인 경우
   if (user) {
-    console.log(user);
+    // 로그인 상태인 경우
     logInEl.style.display = "none";
     myPageEl.style.display = "block";
     logOutEl.style.display = "block";
     create.style.display = "block";
   } else {
-    console.log(user);
     // 로그아웃 상태인 경우
     logInEl.style.display = "block";
     myPageEl.style.display = "none";

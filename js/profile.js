@@ -1,8 +1,9 @@
 /**
- * @todo 화면정지 버그 해결하기
  * @todo 서버에서 프로필 이미지 가져오기
  * @todo 서버에서 프로필 이미지 보내기
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/profile.js
+ *
+ * photoURL을 유저에게서 얻어와 활용합니다.
  *
  * 파이어 베이스 storage 공식 문서
  * @see https://firebase.google.com/docs/storage/web/upload-files?hl=en&authuser=0
@@ -20,10 +21,19 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 export const changeProfile = async (event) => {
   event.preventDefault();
+  /**
+   * 반복 제출을 막기 위해서 disabled시킵니다.
+   *
+   * @todo 아래의 내역은 나중에 진행합니다.
+   * 더 좋은 사용자 경험을 위해서는 3초만 비활성화를 합니다.
+   * 비활성화 되어 있는 동안 버튼은 회색으로 변형합니다.
+   * 변형이 가능해질 때 본래 색으로 돌아옵니다.
+   */
   $("#submit-btn").disabled = true;
+  // 첫번째 인자는 사용할 서비스의 주체를 알아내기 위해 넣어줘야 합니다.
   const imgRef = ref(
     storageService, // ref함수는 storageService를 첫번째 인자로 받아야 합니다.
-    `${authService.currentUser.uid}/${uuidv4()}` // 파일 이름의 형식으로 업로드할 수 있습니다. 유저의 고유한 id랑 임의의 이미지에 지정해줄 해쉬값을 서버로 송신합니다.
+    `${authService.currentUser.uid}/${uuidv4()}` // 파일 이름의 형식으로 업로드할 수 있습니다. 유저명을 폴더이름으로 지정합니다. 폴더에 넣을 이미지 이름은 uuidv4 해쉬 값을 활용합니다.
   );
   const profileName = $("#profile-name").value;
   // 프로필 이미지 dataUrl을 Storage에 업로드 후 다운로드 링크를 받아서 photoURL에 저장.
@@ -32,7 +42,7 @@ export const changeProfile = async (event) => {
   let downloadUrl = null;
   if (imgDataUrl) {
     const response = await uploadString(imgRef, imgDataUrl, "data_url"); // https://firebase.google.com/docs/storage/web/upload-files?hl=en&authuser=0#upload_from_a_string
-    downloadUrl = await getDownloadURL(response.ref);
+    downloadUrl = await getDownloadURL(response.ref); // https://firebase.google.com/docs/reference/js/v8/firebase.storage.Reference#getdownloadurl
   }
   await updateProfile(authService.currentUser, {
     displayName: profileName ? profileName : null,
@@ -40,13 +50,28 @@ export const changeProfile = async (event) => {
   })
     .then(() => {
       alert("프로필 수정 완료");
-      window.location.hash = "#fanLog";
+      window.location.hash = "#/";
     })
     .catch((error) => {
       alert("프로필 수정 실패");
       console.log("error:", error);
     });
 };
+
+authService.onAuthStateChanged((user) => {
+  // Firebase 연결되면 화면 표시
+  // user === authService.currentUser 와 같은 값
+  if (user) {
+    // 로그인 상태인 경우
+    $("#Profile-img").src =
+      user.photoURL ?? `../static/images/blank-profile-picture-973460.svg`;
+    // displayName은 닉네임
+    $("#profile-name").value = user.displayName ?? ``;
+    // user.displayName이 null 이면 email을 일단 표시합니다. 아니라면 user.displayName을 표시합니다.
+  } else {
+    // 로그아웃 상태인 경우
+  }
+});
 
 export const onFileChange = async (event) => {
   const uploadedFile = event.target.files[0];
