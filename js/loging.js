@@ -16,16 +16,21 @@ import {
   query,
   getDocs,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-import { dbService, authService } from "../firebase.js";
+
+import { dbService, authService } from "./firebase.js";
 
 // 추가
 export const save_comment = async (event) => {
   event.preventDefault();
   const comment = document.getElementById("comment");
-  const { uid, photoURL, displayName } = authService.currentUser;
+  // uid = 유저식별할수있는 아이디값
+  // photoURL 유저 프로필 사진
+  // displayName = 유저 이름
+  const { uid } = authService.currentUser;
   try {
-    await addDoc(collection(dbService, "comments"), {
-      text: comment.value,
+    await addDoc(collection(dbService, "posts"), {
+      title: modalTitleInput.value,
+      desc: contentTextarea.value,
       createdAt: Date.now(),
       creatorId: uid,
       profileImg: photoURL,

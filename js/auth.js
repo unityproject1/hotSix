@@ -29,6 +29,7 @@ $(`.overlay`).style.display = "none";
 $(`.login-modal`).style.display = "none";
 $(`.signup-modal`).style.display = "none";
 
+// 로그인
 export const openPopupLogin = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = true; // 사용자는 로그인 모달로 접근했습니다.
@@ -37,6 +38,24 @@ export const openPopupLogin = () => {
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
   $(`.signup-modal`).style.display = "none";
+};
+
+// 로그아웃
+export const logout = () => {
+  signOut(authService)
+    .then(() => {
+      // Sign-out successful.
+      localStorage.clear();
+      console.log("로그아웃 성공");
+      let logInEl = document.querySelector("#login");
+      logInEl.style.display = "block";
+      logOutEl.style.display = "none";
+      $(`.create-content`).style.display = "none";
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log("error:", error);
+    });
 };
 
 export const switchPopupSignup = () => {
@@ -119,6 +138,7 @@ export const handleAuth = (event) => {
 
         logInEl.style.display = "none";
         logOutEl.style.display = "block";
+        $(`.create-content`).style.display = "flex";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -169,22 +189,6 @@ export const socialLogin = (event) => {
       console.log("error:", error);
       const errorCode = error.code;
       const errorMessage = error.message;
-    });
-};
-
-export const logout = () => {
-  signOut(authService)
-    .then(() => {
-      // Sign-out successful.
-      localStorage.clear();
-      console.log("로그아웃 성공");
-      let logInEl = document.querySelector("#login");
-      logInEl.style.display = "block";
-      logOutEl.style.display = "none";
-    })
-    .catch((error) => {
-      // An error happened.
-      console.log("error:", error);
     });
 };
 

@@ -4,6 +4,7 @@
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js
  */
 
+import { authService } from "./js/firebase.js";
 import { onFileChange } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
 import {
@@ -21,7 +22,13 @@ import {
   modaldown,
   modalFileChange,
 } from "./js/detail.js";
-import { authService } from "./js/firebase.js";
+
+// import {
+//   save_comment,
+//   update_comment,
+//   onEditing,
+//   delete_comment,
+// } from "./js/loging.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또는 새로고침 시 처리
@@ -61,7 +68,7 @@ window.modaldown = modaldown;
 window.modalFileChange = modalFileChange;
 
 // CRUD
-// window.save_comment = save_comment;
+window.save_comment = save_comment;
 // window.update_comment = update_comment;
 // window.onEditing = onEditing;
 // window.delete_comment = delete_comment;
