@@ -1,5 +1,4 @@
 /**
- * @todo detail은 append 형식 라우팅.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/router.js
  */
 
@@ -8,15 +7,9 @@ export const route = (event) => {
   window.location.hash = event.target.hash;
 };
 
-/**
- * @todo detail 페이지접근하기
- * 1. 자식노드에 #값 부여하기
- * 2. 자식노드 선택시 부모노드의 #값을 참조하기
- */
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
-  login: "/pages/login-modal.html",
   detail: "/pages/detail.html",
   404: "/pages/404.html",
 };

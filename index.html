@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./static/scss/profile.css" />
     <link rel="stylesheet" href="./static/scss/detail.css" />
     <link rel="stylesheet" href="./static/scss/main.css" />
+    <link rel="stylesheet" href="./static/scss/auth.css" />
+    <!-- auth.css -->
+
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,13 +47,13 @@
                     <div class="main-nav">
                         <ul class="nav-menu">
                             <li class="nav-item create-post" style="display: none">
-                                <a href="#create" onclick="route(event)">글쓰기</a>
+                                <a class="nav-item-btn" href="#create" onclick="route(event)">글쓰기</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#login" onclick="route(event)">로그인</a>
+                                <div class="nav-item-btn" href="#login" onclick="openPopupLogin()">로그인</div>
                             </li>
                             <li class="nav-item">
-                                <a href="#myPage" onclick="route(event)">마이페이지</a>
+                                <a class="nav-item-btn" href="#myPage" onclick="route(event)">마이페이지</a>
                             </li>
                         </ul>
                     </div>
@@ -61,6 +64,56 @@
             </div>
         </nav>
         <div class="content-container"></div>
+        <div class="auth-container">
+            <div class="auth-modal login-modal">
+                <div class="modal-header">
+                    <div></div>
+                    <h2>로그인</h2>
+                    <div>
+                      <span class="material-icons" onclick="closePopup()">close</span>
+                    </div>
+                  </div>
+                  <form action="" method="post">
+                    <label for="login-email">ID</label>
+                    <input
+                      type="email"
+                      id="login-email"
+                      class="input-body1"
+                      placeholder="username@email.com"
+                    />
+                    <label for="login-password">PW</label>
+                    <input type="password" id="login-password" class="input-body1" />
+                    <input type="submit" class="login btn" value="로그인"></input>
+                  </form>
+                  <div onclick="switchPopupSignup()" class="signup btn"> 회원가입 </div>
+                  <a class="google btn">구글 로그인</a>
+                  <a class="kakao btn">카카오 로그인</a>
+            </div>
+            <div class="auth-modal signup-modal">
+                <div class="modal-header">
+                    <div></div>
+                    <h2>회원가입</h2>
+                    <div>
+                      <span class="material-icons" onclick="closePopup()">close</span>
+                    </div>
+                  </div>
+                  <form action="" method="post">
+                    <label for="signup-email">ID</label>
+                    <input
+                      type="email"
+                      id="signup-email"
+                      class="input-body1"
+                      placeholder="username@email.com"
+                    />
+                    <label for="signup-password">PW</label>
+                    <input type="password" id="signup-password" class="input-body1" />
+                    <!-- 비밀번호가 위 input이랑 일치하는지 확인합니다. -->
+                    <label for="password-confirm">PW confirm</label>
+                    <input type="password" id="password-confirm" class="input-body1" />
+                    <input type="submit" class="login btn" value="회원가입"></input>
+                  </form>
+            </div>
+            <div class="overlay" onclick="closePopup()"></div>
+        </div>
 </body>
-
 </html>
