@@ -1,0 +1,75 @@
+export function modalModify() {
+  $(`#modalModify-completed`).show();
+  $(`#modalDate`).show();
+  let modifiedTitle = $(`#modalTitle`).text();
+  let modifiedContent = $(`.modalContent`).text();
+  console.log(modifiedContent);
+  $(`#modalButtonModify`).hide();
+  $(`#modalTitle`).hide();
+  $(`.modalContent`).hide();
+  $(`#modalDate`).hide();
+  $(`#uplord`).show();
+  $(".img-container").css("pointer-events", "auto");
+  //타이틀 변경 요소 보이기
+  $(`.form__group`).show();
+  // 내용 변경 요소 보이기
+  $(`.text__grop`).show();
+
+  $(`#modalTitleInput`).attr("value", `${modifiedTitle}`);
+  $(`#contentTextarea`).val(modifiedContent);
+}
+
+export function modalModifyClose() {
+  $(`#modalModify-completed`).hide();
+  $(`#modalDate`).show();
+  let modifiedTitle = $(`#modalTitleInput`).val();
+  let modifiedContent = $(`#contentTextarea`).val();
+  console.log(modifiedContent);
+  $(`#modalButtonModify`).show();
+
+  $(".img-container").css("pointer-events", "none");
+
+  // 내용 변경 숨기기
+  $(`.text__grop`).hide();
+  // 타이틀 변경 숨기기
+  $(`.form__group`).hide();
+  $(`#modalTitle`).text(modifiedTitle);
+  $(`.modalContent`).text(modifiedContent);
+  $(`#modalTitle`).show();
+  $(`.modalContent`).show();
+}
+
+export function modalup() {
+  document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;
+      `;
+  $(`.modalFirstBlack`).css(`top`, "0vh");
+
+  $(`.modalFirstBlack`).addClass("visible");
+  $(`.modalFirstBlack`).removeClass("hide");
+}
+
+export function modaldown() {
+  const scrollY = document.body.style.top;
+  document.body.style.cssText = ``;
+  window.scrollTo(0, parseInt(scrollY) * -1);
+  $(`.modalFirstBlack`).css(`top`, `100vh`);
+
+  // $(`.modalFirstBlack`).addClass("hide");
+  // $(`.modalFirstBlack`).removeClass("visible");
+}
+
+export const modalFileChange = (event) => {
+  const uploadedFile = event.target.files[0];
+  /** @see https://developer.mozilla.org/ko/docs/Web/API/FileReader */
+  const reader = new FileReader();
+  reader.readAsDataURL(uploadedFile);
+  reader.onload = (finishedEvent) => {
+    const imgDataUrl = finishedEvent.currentTarget.result;
+    localStorage.setItem("imgDataUrl2", imgDataUrl);
+    document.getElementById("modalPicture").src = imgDataUrl;
+  };
+};

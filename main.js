@@ -6,15 +6,26 @@
 
 import { onFileChange } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
+import {
+  modalModify,
+  modalModifyClose,
+  modalup,
+  modaldown,
+  modalFileChange,
+} from "./js/detail.js";
 import { openPopupLogin, closePopup, switchPopupSignup } from "./js/auth.js";
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
-
 document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또는 새로고침 시 처리
 
 // 전역 함수 리스트
 window.route = route;
 window.onFileChange = onFileChange;
+window.modalModify = modalModify;
+window.modalModifyClose = modalModifyClose;
+window.modalup = modalup;
+window.modaldown = modaldown;
+window.modalFileChange = modalFileChange;
 window.openPopupLogin = openPopupLogin;
 window.switchPopupSignup = switchPopupSignup;
 window.closePopup = closePopup;
@@ -37,3 +48,7 @@ const progressBar = () => {
 window.onscroll = function () {
   progressBar();
 };
+
+// document.querySelector(".modalFirstBlack").addEventListener("click", (e) => {
+//   console.log(e.target);
+// });
