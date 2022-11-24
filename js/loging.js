@@ -22,22 +22,28 @@ import { dbService, authService } from "./firebase.js";
 // 추가
 export const save_comment = async (event) => {
   // event.preventDefault();
-  const comment = document.getElementById("comment");
+
+  const postTitle = document.getElementById("postTitle");
+  const postImg = document.getElementById("modalPicture");
+  const postDesc = document.getElementById("postDesc");
   // uid = 유저식별할수있는 아이디값
   // photoURL 유저 프로필 사진
   // displayName = 유저 이름
   const { uid } = authService.currentUser;
   try {
     await addDoc(collection(dbService, "posts"), {
-      title: modalTitleInput.value,
-      desc: contentTextarea.value,
       createdAt: Date.now(),
       creatorId: uid,
-      profileImg: photoURL,
-      nickname: displayName,
+      title: postTitle.value,
+      Desc: postDesc.value,
+      Img: modalPicture.src,
     });
-    comment.value = "";
-    getCommentList();
+    // 입력값 비워주기
+    postTitle.value = "";
+    postDesc.value = "";
+
+    // 서버에서 리스트들을 가져오기
+    // getCommentList();
   } catch (error) {
     alert(error);
     console.log("error in addDoc:", error);
