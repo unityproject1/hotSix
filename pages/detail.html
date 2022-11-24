@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
   function modalModify() {
     $(`#modalModify`).show();
     $(`#modalDate`).show();
@@ -29,39 +29,58 @@
     $(`#modalTitle`).show();
     $(`.modalContent`).show();
   }
-</script> -->
+
+  // 상세페이지 사진 수정 modalPicture을 Storage에 업로드 후 다운로드 링크를 받아서 photoURL에 저장.
+  import {
+    ref,
+    uploadString,
+    getDownloadURL,
+    deleteObject
+  } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+  import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+
+  // Storage에서 이미지 저장 위치 지정.
+  // 현 코드에서는 userId 폴더 내에 파일명은 uuid(전세계 유일한 ID)로 설정
+  const imgRef = ref(
+    storageService,
+    `${authService.currentUser.uid}/${uuidv4()}`
+  );
+  // 파일 저장 API. 파일 포맷이 data_url인 경우
+  uploadString(imgRef, imgDataUrl, "data_url");
+
+  // 파일 삭제
+  deleteObject(ref(storageService, attachmentUrl)); 
+</script>
 
 <div class="wrap">
   <div class="modalFirstBlack">
     <div class="modalSecondWhite">
-      <div class="modalFlex">
-        <div class="modalGrid">
-          <h1 id="modalTitle">제목</h1>
-          <input id="modalTitleInput" />
-          <button id="modalButtonModify" type="button" onclick="modalModify()">
-            수정하기
-          </button>
-          <button id="modalModify" onclick="modalModifyClose()" type=" button">
-            수정완료
-          </button>
-          <button id="modalButtonDelete" type="button">삭제</button>
-        </div>
-        <!-- 날짜 받아오기 -->
-        <div id="modalDate">2022.11.21.</div>
+      <div class="modalGrid">
+        <input id="modalTitleInput" />
+        <button id="modalButtonModify" type="button" onclick="modalModify()">
+          수정하기
+        </button>
+        <button id="modalModify" onclick="modalModifyClose()" type=" button">
+          수정완료
+        </button>
+        <button id="modalButtonDelete" type="button">삭제</button>
+      </div>
 
-        <!-- 사진 가운데 -->
-        <a href="http://species-in-pieces.com/#">
-          <img
-            class="modalPicture"
-            src="https://d3atsf3fgek2rw.cloudfront.net/content/uploads/2015/03/Screen-Shot-2015-03-20-at-16.52.22-1002x633.png"
-            alt="red panda"
-          />
-        </a>
-        <!-- 본문 내용 -->
-        <div>
-          <h3 class="modalContent">본문내용 자리</h3>
-          <textarea id="contentTextarea"></textarea>
+      <div class="modalFlex">
+        <!-- 컨텐츠 부분 -->
+        <h1 id="modalTitle">제목</h1>
+        <div class="content-container">
+          <div id="modalDate">2022.11.21.</div>
+          <a href="#">
+            <img class="modalPicture" src="../static/images/example2.png" alt="춘식이" />
+          </a>
+          <div>
+            <h3 class="modalContent">본문내용 자리</h3>
+            <textarea id="contentTextarea"></textarea>
+          </div>
         </div>
+
+
       </div>
       <button type="button" class="modalButtonClose">닫기</button>
     </div>
