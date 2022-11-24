@@ -5,13 +5,21 @@
 export const route = (event) => {
   event.preventDefault();
   window.location.hash = event.target.hash;
+  console.log(event.target.hash);
 };
+
+export const gotoPage = () => {
+
+  window.location.hash = "#createPost";
+};
+
 
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
   detail: "/pages/detail.html",
   404: "/pages/404.html",
+  createPost: "/pages/createPost.html",
 };
 
 export const handleLocation = async () => {

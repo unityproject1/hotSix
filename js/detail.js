@@ -39,7 +39,8 @@ export function modalModifyClose() {
   $(`.modalContent`).show();
 }
 
-export function modalup() {
+export function modalup(event) {
+  console.log(event);
   document.body.style.cssText = `
       position: fixed; 
       top: -${window.scrollY}px;

@@ -21,7 +21,7 @@ import { dbService, authService } from "./firebase.js";
 
 // 추가
 export const save_comment = async (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   const comment = document.getElementById("comment");
   // uid = 유저식별할수있는 아이디값
   // photoURL 유저 프로필 사진

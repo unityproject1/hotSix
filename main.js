@@ -6,7 +6,7 @@
 
 import { authService } from "./js/firebase.js";
 import { onFileChange } from "./js/profile.js";
-import { handleLocation, route } from "./js/router.js";
+import { handleLocation, route, gotoPage } from "./js/router.js";
 import {
   openPopupLogin,
   closePopup,
@@ -23,12 +23,13 @@ import {
   modalFileChange,
 } from "./js/detail.js";
 
-// import {
-//   save_comment,
-//   update_comment,
-//   onEditing,
-//   delete_comment,
-// } from "./js/loging.js";
+import {
+  save_comment,
+  // update_comment,
+  // onEditing,
+  // delete_comment,
+} from "./js/loging.js";
+
 
 window.addEventListener("hashchange", handleLocation); // hash url 변경 시 처리
 document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또는 새로고침 시 처리
@@ -67,6 +68,8 @@ window.modalup = modalup;
 window.modaldown = modaldown;
 window.modalFileChange = modalFileChange;
 
+// 포스트 생성 페이지 이동
+window.gotoPage = gotoPage;
 // CRUD
 window.save_comment = save_comment;
 // window.update_comment = update_comment;

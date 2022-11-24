@@ -110,13 +110,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 
     .post-add-btn {
       width: 80%;
       height: 70px;
       background-color: white;
       border-radius: 10px;
+      cursor: pointer;
     }
     .btn {
       width: 80%;
@@ -217,3 +217,5 @@ body {
     font-size: 26px;
   }
 }
+
+
