@@ -18,11 +18,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Pacifico:wght@400;700&display=swap" rel="stylesheet" />
   <!-- 구글 아이콘 -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <script defer src="main.js" type="module"></script>
   <title>핫소스</title>
 </head>
 
 <body>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' 0,
+        'opsz' 48
+    }
+  </style>
   <div id="root">
     <nav id="navbar" class="navbar navbar-bg-transparent">
       <div class="nav-container">
@@ -73,7 +86,7 @@
         <div onclick="switchPopupSignup()" class="signup btn"> 회원가입 </div>
         <button name="google" class="google font-body1 btn" onclick="socialLogin(event)">Google</button>
         <button name="github" class="github font-body1 btn" onclick="socialLogin(event)">GitHub</button>
-        </div>
+      </div>
       <div class="auth-modal signup-modal">
         <div class="modal-header">
           <div></div>
