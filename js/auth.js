@@ -1,5 +1,6 @@
 /**
  * 모듈 미완성
+ * @todo 로그인 후 새로고침시 nav 로그아웃이 남아야 합니다.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
 
@@ -58,14 +59,10 @@ export const closePopup = () => {
   $(`.signup-modal`).style.display = "none";
 };
 // 로그인 nav 변수
-let logInEl = document.querySelector("#login");
-let logOutEl = document.querySelector("#logout");
-
-/**
- *
- * @param {*} event
- * @returns
- */
+const logInEl = $("#login");
+const logOutEl = $("#logout");
+const myPageEl = $("#my-page");
+const create = $("#create");
 
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {
@@ -176,11 +173,10 @@ export const logout = () => {
   signOut(authService)
     .then(() => {
       // Sign-out successful.
+      // 새로 고침을 하면 로그인 상태이지만 로그아웃이 nav에 없고 로그인만 또 존재합니다.
       localStorage.clear();
       console.log("로그아웃 성공");
-      let logInEl = document.querySelector("#login");
-      logInEl.style.display = "block";
-      logOutEl.style.display = "none";
+      //
     })
     .catch((error) => {
       // An error happened.
@@ -189,3 +185,22 @@ export const logout = () => {
 };
 
 // 로그인 했을때 로그인에 따라 맞는 nav 메뉴 변경
+authService.onAuthStateChanged((user) => {
+  // Firebase 연결되면 화면 표시
+  // user === authService.currentUser 와 같은 값
+  // 로그인 상태인 경우
+  if (user) {
+    console.log(user);
+    logInEl.style.display = "none";
+    myPageEl.style.display = "block";
+    logOutEl.style.display = "block";
+    create.style.display = "block";
+  } else {
+    console.log(user);
+    // 로그아웃 상태인 경우
+    logInEl.style.display = "block";
+    myPageEl.style.display = "none";
+    logOutEl.style.display = "none";
+    create.style.display = "none";
+  }
+});
