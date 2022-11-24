@@ -1,19 +1,24 @@
 /**
  * 미완성
+ * 이 모듈은 사용자의 행동을 DB에 저장합니다.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/fanLog.js
+ *
+ * CRUD 관련 파이어 베이스 공식문서
+ * @see https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=0
  */
-// import {
-//   doc,
-//   addDoc,
-//   updateDoc,
-//   deleteDoc,
-//   collection,
-//   orderBy,
-//   query,
-//   getDocs,
-// } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-// import { dbService, authService } from "../firebase.js";
+import {
+  doc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  collection,
+  orderBy,
+  query,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { dbService, authService } from "../firebase.js";
 
+// 추가
 export const save_comment = async (event) => {
   event.preventDefault();
   const comment = document.getElementById("comment");
@@ -34,22 +39,23 @@ export const save_comment = async (event) => {
   }
 };
 
-export const onEditing = (event) => {
-  // 수정버튼 클릭
-  event.preventDefault();
-  const udBtns = document.querySelectorAll(".editBtn, .deleteBtn");
-  udBtns.forEach((udBtn) => (udBtn.disabled = "true"));
+// export const onEditing = (event) => {
+//   // 수정버튼 클릭
+//   event.preventDefault();
+//   const udBtns = document.querySelectorAll(".editBtn, .deleteBtn");
+//   udBtns.forEach((udBtn) => (udBtn.disabled = "true"));
 
-  const cardBody = event.target.parentNode.parentNode;
-  const commentText = cardBody.children[0].children[0];
-  const commentInputP = cardBody.children[0].children[1];
+//   const cardBody = event.target.parentNode.parentNode;
+//   const commentText = cardBody.children[0].children[0];
+//   const commentInputP = cardBody.children[0].children[1];
 
-  commentText.classList.add("noDisplay");
-  commentInputP.classList.add("d-flex");
-  commentInputP.classList.remove("noDisplay");
-  commentInputP.children[0].focus();
-};
+//   commentText.classList.add("noDisplay");
+//   commentInputP.classList.add("d-flex");
+//   commentInputP.classList.remove("noDisplay");
+//   commentInputP.children[0].focus();
+// };
 
+// 수정
 export const update_comment = async (event) => {
   event.preventDefault();
   const newComment = event.target.parentNode.children[0].value;
@@ -71,6 +77,7 @@ export const update_comment = async (event) => {
   }
 };
 
+// 삭제
 export const delete_comment = async (event) => {
   event.preventDefault();
   const id = event.target.name;
@@ -85,6 +92,7 @@ export const delete_comment = async (event) => {
   }
 };
 
+// 가져오기
 export const getCommentList = async () => {
   let cmtObjList = [];
   const q = query(

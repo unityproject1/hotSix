@@ -8,6 +8,10 @@ body {
   --adaptiveOpacity50: rgba(0, 23, 51, 0.05);
 }
 
+.Login {
+  display: none;
+}
+
 #navbar {
   border-bottom: 0.5px solid var(--Grey500);
   position: fixed;
