@@ -29,7 +29,9 @@ export const handleLocation = async () => {
   const html = await fetch(route).then((data) => data.text());
   $(".content-container").innerHTML = html;
 
+  // myPage로 이동했을 때 DOM을 업데이트합니다.
   if (path === "myPage") {
+    // console.log(path); // 거짓도 실행하는 기적의 조건문 실행을 막기 위해 존재하는 console.log입니다.
     authService.onAuthStateChanged((user) => {
       // user === authService.currentUser 와 같은 값을 갖습니다. 그리고 firebase는 이 방식을 권장합니다.
       if (user) {
