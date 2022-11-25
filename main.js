@@ -4,7 +4,7 @@
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/main.js
  */
 
-import { onFileChange } from "./js/profile.js";
+import { onFileChange, changeProfile } from "./js/profile.js";
 import { handleLocation, route } from "./js/router.js";
 import {
   openPopupLogin,
@@ -28,13 +28,15 @@ document.addEventListener("DOMContentLoaded", handleLocation); // 첫 랜딩 또
 
 // 로그인 상태 모니터링
 authService.onAuthStateChanged((user) => {
-  // Firebase 연결되면 화면 표시
-  // user === authService.currentUser 와 같은 값
+  // user === authService.currentUser 와 같은 값을 갖습니다. 그리고 firebase는 이 방식을 권장합니다.
   if (user) {
-    console.log(user);
     // 로그인 상태인 경우
+    $("#Profile-img").src =
+      user.photoURL ?? `../static/images/blank-profile-picture-973460.svg`;
+    $("#profile-name").value = user.displayName ?? ``;
   } else {
-    // 로그아웃 상태인 경우
+    // 로그아웃 상태인 경우 홈페이지로 리다이렉팅하기
+    window.location.hash = "/";
   }
 });
 
@@ -43,7 +45,7 @@ window.route = route;
 
 // 프로필
 window.onFileChange = onFileChange;
-// window.changeProfile = changeProfile;
+window.changeProfile = changeProfile;
 
 // 로그인 & 회원가입
 window.handleAuth = handleAuth;
