@@ -102,12 +102,10 @@ export const handleAuth = (event) => {
   // 제출버튼의 value를 기준으로 선택할 수 있어야 합니다.
   if (authRouteLogin === true) {
     // 유효성검사 후 로그인 성공 시 팬명록 화면으로
-    console.log("login");
     signInWithEmailAndPassword(authService, loginEmailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("user=", user);
         closePopup(); // 라우트 위치는 그대로 두고 modal을 닫습니다.
 
         logInEl.style.display = "none";
