@@ -50,28 +50,13 @@ export const changeProfile = async (event) => {
   })
     .then(() => {
       alert("프로필 수정 완료");
-      window.location.hash = "#/";
+      window.location.hash = "";
     })
     .catch((error) => {
       alert("프로필 수정 실패");
       console.log("error:", error);
     });
 };
-
-authService.onAuthStateChanged((user) => {
-  // Firebase 연결되면 화면 표시
-  // user === authService.currentUser 와 같은 값
-  if (user) {
-    // 로그인 상태인 경우
-    $("#Profile-img").src =
-      user.photoURL ?? `../static/images/blank-profile-picture-973460.svg`;
-    // displayName은 닉네임
-    $("#profile-name").value = user.displayName ?? ``;
-    // user.displayName이 null 이면 email을 일단 표시합니다. 아니라면 user.displayName을 표시합니다.
-  } else {
-    // 로그아웃 상태인 경우
-  }
-});
 
 export const onFileChange = async (event) => {
   const uploadedFile = event.target.files[0];

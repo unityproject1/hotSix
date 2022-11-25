@@ -33,7 +33,6 @@ $(`.signup-modal`).style.display = "none";
 export const openPopupLogin = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = true; // 사용자는 로그인 모달로 접근했습니다.
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
@@ -43,7 +42,6 @@ export const openPopupLogin = () => {
 export const switchPopupSignup = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = false; // 사용자는 회원가입 모달로 접근했습니다.
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "none";
@@ -52,7 +50,6 @@ export const switchPopupSignup = () => {
 export const closePopup = () => {
   document.body.style = `overflow: auto`;
   authRouteLogin = false;
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "none";
   $(`.auth-container`).style.display = "none";
   $(`.login-modal`).style.display = "none";
@@ -67,7 +64,6 @@ const create = $("#create");
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
-  console.log(authRouteLogin);
   const loginEmailVal = $(`#login-email`).value;
   const pwVal = $(`#login-password`).value;
   const signupEmailVal = $(`#signup-email`).value;
@@ -154,8 +150,6 @@ export const socialLogin = (event) => {
     provider = new GoogleAuthProvider();
   } else if (name === "github") {
     provider = new GithubAuthProvider();
-    // TODO kakao AuthProvider 추가하기
-    console.log("깃헙 로그인 시도");
   }
   signInWithPopup(authService, provider)
     .then((result) => {
