@@ -20,6 +20,7 @@ import {
   modalup,
   modaldown,
   modalFileChange,
+  modalDelete,
 } from "./js/detail.js";
 import {
   save_comment,
@@ -58,6 +59,7 @@ window.modalModifyClose = modalModifyClose;
 window.modalup = modalup;
 window.modaldown = modaldown;
 window.modalFileChange = modalFileChange;
+window.modalDelete = modalDelete;
 // 포스트 생성 페이지 이동
 window.gotoPage = gotoPage;
 // CRUD
