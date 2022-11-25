@@ -6,7 +6,8 @@
   </label>
 </div>
 
-<div class="card-container" href="#detail" onclick="modalup(event)">
+
+<!--  <div class="card-container" href="#detail" onclick="modalup(event)">
   <div class="content-box">
     <img class="content-img"
       src="http://blog.cmiscm.com/wp-content/uploads/2019/08/2019-08-29-10-56-12.2019-08-29-10_58_56.gif"
@@ -16,86 +17,5 @@
     <p>김종민 디벨로퍼의 "Leon Sans" 작품을 감상해보자</p>
     <time class="time">2022.11.18</time>
   </div>
-</div>
+</div> -->
 
-<div class="card-container" href="#detail_2" onclick="modalup()">
-  <div class="content-box">
-    <img class="content-img" src="./static/images/example.png" alt="멸종위기동물사이트" />
-    <span>인터렉티브 사이트</span>
-    <h4>멸종 위기 동물들을 볼수있는 사이트?</h4>
-    <p>
-      멸종위기 동물들을 기억하고자 인터렉티브 디자이너 Bryan James 의 'in
-      Pieces' 감상해보자
-    </p>
-    <time class="time">2022.11.18</time>
-  </div>
-</div>
-
-<div class="card-container" href="#detail_3" onclick="modalup()">
-  <div class="content-box">
-    <img class="content-img" src="./static/images/example2.png" alt="멸종위기동물사이트" />
-    <span>인터렉티브 사이트</span>
-    <h4>춘식이의 일기: 라이언은 하루종일 뭘 할까?</h4>
-    <p>춘식이의 시점으로 3d로 표현된 라이언의 하루를 경험할수있다.</p>
-    <time class="time">2022.11.20</time>
-  </div>
-</div>
-
-<!-- detail-page -->
-<div class="modalFirstBlack">
-  <div class="modal-side" onclick="modaldown()">
-    <span onclick="modaldown()" class="material-symbols-outlined modalButtonClose">
-      close
-    </span>
-  </div>
-  <div class="modalSecondWhite">
-    <div class="modalFlex">
-      <div class="modalGrid">
-        <div class="dummy-box"></div>
-        <button id="modalButtonModify" class="modal-btn update-btn" type="button" onclick="modalModify()">
-          수정하기
-        </button>
-        <button id="modalModify-completed" class="modal-btn" onclick="modalModifyClose()" type=" button">
-          수정완료
-        </button>
-        <button id="modalButtonDelete" class="modal-btn" type="button">
-          삭제
-        </button>
-      </div>
-      <div class="modal-container">
-        <div class="form__group field">
-          <input type="input" id="modalTitleInput" class="form__field" name="title" placeholder="title" required />
-          <label for="" class="form__label">제목</label>
-        </div>
-        <h4 id="modalTitle">인터렉티브한 디자인 웹사이트 란 ?</h4>
-        <time id="modalDate">2022.11.21.</time>
-
-        <div class="img-container" style="pointer-events: none;">
-          <form id="uplord" onsubmit="">
-            <!-- https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/pages/profile.html -->
-            <label for="img-input">
-              <img id="modalPicture" src="../static/images/example2.png" alt="content-img" />
-              <input onchange="modalFileChange(event)" id="img-input" type="file" accept="images/*" />
-            </label>
-          </form>
-
-        </div>
-        <div class="content-dsc">
-          <p class="modalContent dsc1">
-            김종민 디벨로퍼의 "Leon Sans" 작품을 감상해보자
-          </p>
-          <p class="modalContent dsc2">
-            Leon Sans는 김종민이 2019년 코드로 만든 기하학적 산세리프
-            서체입니다. 글꼴 두께를 동적으로 변경하고 HTML5의 Canvas 요소에서
-            사용자 지정 애니메이션, 효과 또는 모양을 만들 수 있습니다. 그는 새로
-            태어난 아기 Leon을 기념하기 위해 글꼴을 디자인했습니다.
-          </p>
-          <div class="text__grop">
-            <label for="content-label">내용</label>
-            <textarea id="contentTextarea"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

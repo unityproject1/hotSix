@@ -18,32 +18,31 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 
 import { dbService, authService } from "./firebase.js";
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
 // 추가
 export const save_comment = async (event) => {
   // event.preventDefault();
 
   const postTitle = document.getElementById("postTitle");
+  const postsubTitle = document.getElementById("postsubTitle");
   const postImg = document.getElementById("modalPicture");
   const postDesc = document.getElementById("postDesc");
+
   // uid = 유저식별할수있는 아이디값
-  // photoURL 유저 프로필 사진
-  // displayName = 유저 이름
   const { uid } = authService.currentUser;
   try {
     await addDoc(collection(dbService, "posts"), {
-      createdAt: Date.now(),
-      creatorId: uid,
+      time: Date.now(),
+      postId: uuidv4(),
+      userId: uid,
       title: postTitle.value,
-      Desc: postDesc.value,
-      Img: modalPicture.src,
+      subTitle: postsubTitle.value,
+      desc: postDesc.value,
+      img: postImg.src,
     });
-    // 입력값 비워주기
-    postTitle.value = "";
-    postDesc.value = "";
-
-    // 서버에서 리스트들을 가져오기
-    // getCommentList();
+    //뒤로 가기
+    goBack();
   } catch (error) {
     alert(error);
     console.log("error in addDoc:", error);
@@ -103,52 +102,77 @@ export const delete_comment = async (event) => {
   }
 };
 
-// 가져오기
+// 2. 가져오기
 export const getCommentList = async () => {
-  let cmtObjList = [];
+  let postList = [];
   const q = query(
-    collection(dbService, "comments"),
-    orderBy("createdAt", "desc")
+    collection(dbService, "posts"),
+    orderBy("time", "desc", "img", "title", "userId", "subTitle", "postId")
   );
+
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    const commentObj = {
-      id: doc.id,
+    const postObj = {
+      userId: doc.userId,
       ...doc.data(),
     };
-    cmtObjList.push(commentObj);
+
+    postList.push(postObj);
+    // 내림차순으로 코드작성
   });
-  const commnetList = document.getElementById("comment-list");
-  const currentUid = authService.currentUser.uid;
-  commnetList.innerHTML = "";
-  cmtObjList.forEach((cmtObj) => {
-    const isOwner = currentUid === cmtObj.creatorId;
-    const temp_html = `<div class="card commentCard">
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p class="commentText">${cmtObj.text}</p>
-                    <p id="${
-                      cmtObj.id
-                    }" class="noDisplay"><input class="newCmtInput" type="text" maxlength="30" /><button class="updateBtn" onclick="update_comment(event)">완료</button></p>
-                    <footer class="quote-footer"><div>BY&nbsp;&nbsp;<img class="cmtImg" width="50px" height="50px" src="${
-                      cmtObj.profileImg
-                    }" alt="profileImg" /><span>${
-      cmtObj.nickname ?? "닉네임 없음"
-    }</span></div><div class="cmtAt">${new Date(cmtObj.createdAt)
-      .toString()
-      .slice(0, 25)}</div></footer>
-                </blockquote>
-                <div class="${isOwner ? "updateBtns" : "noDisplay"}">
-                     <button onclick="onEditing(event)" class="editBtn btn btn-dark">수정</button>
-                  <button name="${
-                    cmtObj.id
-                  }" onclick="delete_comment(event)" class="deleteBtn btn btn-dark">삭제</button>
-                </div>            
-              </div>
-       </div>`;
+  const contentList = document.getElementById("content-list");
+  // const currentUid = authService.currentUser.uid;
+  contentList.innerHTML = "";
+  postList.forEach((postObj) => {
+    // const isOwner = currentUid === postObj.id;
+    const temp_html = `
+    <div class="card-container" href="#detail" onclick="modalup(event)" id ="${
+      postObj.userId
+    }">
+  <div class="content-box" id ="${postObj.postId}">
+    <img
+      class="content-img"
+      src="${postObj.img}"
+      alt="멸종위기동물사이트"
+    />
+    <span>인터렉티브 사이트</span>
+    <h4>${postObj.title}</h4>
+    <p>${postObj.subTitle}</p>
+    <time class="time">
+      ${new Date(postObj.time).toString().slice(0, 25)}
+    </time>
+  </div>
+</div>
+`;
     const div = document.createElement("div");
-    div.classList.add("mycards");
     div.innerHTML = temp_html;
-    commnetList.appendChild(div);
+    contentList.appendChild(div);
+    // gotoHome();
   });
 };
+
+// `<div class="card commentCard">
+//             <div class="card-body">
+//                 <blockquote class="blockquote mb-0">
+//                     <p class="commentText">${postObj.text}</p>
+//                     <p id="${
+//                       postObj.id
+//                     }" class="noDisplay"><input class="newCmtInput" type="text" maxlength="30" /><button class="updateBtn" onclick="update_comment(event)">완료</button></p>
+//                     <footer class="quote-footer"><div>BY&nbsp;&nbsp;<img class="cmtImg" width="50px" height="50px" src="${
+//                       postObj.profileImg
+//                     }" alt="profileImg" /><span>${
+//   postObj.nickname ?? "닉네임 없음"
+// }</span></div><div class="cmtAt"></div></footer>
+//                 </blockquote>
+//                 <div class="${isOwner ? "updateBtns" : "noDisplay"}">
+//                      <button onclick="onEditing(event)" class="editBtn btn btn-dark">수정</button>
+//                   <button name="${
+//                     postObj.id
+//                   }" onclick="delete_comment(event)" class="deleteBtn btn btn-dark">삭제</button>
+//                 </div>
+//               </div>
+//        </div>`;
+
+function goBack() {
+  window.history.go(-1);
+}

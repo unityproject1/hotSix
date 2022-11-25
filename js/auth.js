@@ -51,6 +51,8 @@ export const logout = () => {
       logInEl.style.display = "block";
       logOutEl.style.display = "none";
       $(`.create-content`).style.display = "none";
+      createPostEl.style.display = "none";
+      mypageEl.style.display = "none";
     })
     .catch((error) => {
       // An error happened.
@@ -79,6 +81,8 @@ export const closePopup = () => {
 // 로그인 nav 변수
 let logInEl = document.querySelector("#login");
 let logOutEl = document.querySelector("#logout");
+let createPostEl = document.querySelector("#create-post");
+let mypageEl = document.querySelector("#myPage");
 
 /**
  *
@@ -138,6 +142,8 @@ export const handleAuth = (event) => {
 
         logInEl.style.display = "none";
         logOutEl.style.display = "block";
+        createPostEl.style.display = "block";
+        mypageEl.style.display = "block";
         $(`.create-content`).style.display = "flex";
       })
       .catch((error) => {
