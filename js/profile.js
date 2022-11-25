@@ -80,26 +80,32 @@ export const onFileChange = async (event) => {
 
 // CRUD 중 R부터 구현하기
 // 나의 게시물만 보기 쿼리 던지기
-const readMyPost = async () => {
-  const myPosts = [];
-  let userId = null;
-  authService.onAuthStateChanged((user) => {
-    userId = user.uid;
+export const readMyPost = async () => {
+  authService.onAuthStateChanged(async (user) => {
+    const myPostList = [];
+    // 본인 고유 id랑 일치는 쿼리만 요청합니다. 쿼리 자체는 하나의 클래스입니다.
+    const getMyPost = query(
+      collection(dbService, "posts"),
+      // 첫번째 인자는 요청할 대상이고 두번째 인자는 요청하는 방식입니다. 요청하는 방식은 현재 접속한 유저의 uid랑 일치하는 것만 요청합니다. ???
+      where("userId", `==`, user.uid)
+    );
+    const querySnapshot = await getDocs(getMyPost);
+    querySnapshot.forEach((doc) => {
+      const postObj = {
+        id: doc.id,
+        ...doc.data(),
+      };
+      myPostList.push(postObj);
+    });
+    myPostList.forEach((post) => {
+      // DOM업데이트하면서 그려주기
+      console.log(post.time);
+    });
   });
-
-  // 본인 고유 id랑 일치는 쿼리만 요청합니다.
-  // 쿼리 자체는 하나의 클래스입니다.
-  const getMyPost = query(
-    collection(dbService, "posts"),
-    // 첫번째 인자는 요청할 대상이고 두번째 인자는 요청하는 방식입니다. 요청하는 방식은 현재 접속한 유저의 uid랑 일치하는 것만 요청합니다. ???
-    where("userId", `==`, userId),
-    orderBy("time", "desc")
-  );
-  const querySnapshot = await getDocs(getMyPost);
-  console.log(querySnapshot);
   return;
 };
 readMyPost();
+
 // export const getCommentList = async () => {
 //   let cmtObjList = [];
 //   const q = query(

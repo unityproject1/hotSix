@@ -34,10 +34,12 @@ export const handleLocation = async () => {
     // console.log(path); // 거짓도 실행하는 기적의 조건문 실행을 막기 위해 존재하는 console.log입니다.
     authService.onAuthStateChanged((user) => {
       // user === authService.currentUser 와 같은 값을 갖습니다. 그리고 firebase는 이 방식을 권장합니다.
-      // 로그인 상태인 경우
-      $("#Profile-img").src =
-        user.photoURL ?? `../static/images/blank-profile-picture-973460.svg`;
-      $("#profile-name").value = user.displayName ?? ``;
+      if (user) {
+        // 로그아웃하면 아래 조건문이 실행되고 에러메시지가 발생합니다. 그래서 조건문에 감쌌습니다.
+        $("#Profile-img").src =
+          user.photoURL ?? `../static/images/blank-profile-picture-973460.svg`;
+        $("#profile-name").value = user.displayName ?? ``;
+      }
     });
   }
 };
