@@ -10,12 +10,19 @@
  */
 
 import { $ } from "./util.js";
-import { authService, storageService } from "./firebase.js";
+import { authService, storageService, dbService } from "./firebase.js";
 import {
   ref,
   uploadString,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+import {
+  query,
+  getDocs,
+  collection,
+  where,
+  orderBy,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 import { updateProfile } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
@@ -70,3 +77,83 @@ export const onFileChange = async (event) => {
     document.getElementById("Profile-img").src = imgDataUrl;
   };
 };
+
+// CRUD 중 R부터 구현하기
+// 나의 게시물만 보기 쿼리 던지기
+const readMyPost = async () => {
+  const myPosts = [];
+  let userId = null;
+  authService.onAuthStateChanged((user) => {
+    userId = user.uid;
+  });
+
+  // 본인 고유 id랑 일치는 쿼리만 요청합니다.
+  // 쿼리 자체는 하나의 클래스입니다.
+  const getMyPost = query(
+    collection(dbService, "posts"),
+    // 첫번째 인자는 요청할 대상이고 두번째 인자는 요청하는 방식입니다. 요청하는 방식은 현재 접속한 유저의 uid랑 일치하는 것만 요청합니다. ???
+    where("userId", `==`, userId),
+    orderBy("time", "desc")
+  );
+  const querySnapshot = await getDocs(getMyPost);
+  console.log(querySnapshot);
+  return;
+};
+readMyPost();
+// export const getCommentList = async () => {
+//   let cmtObjList = [];
+//   const q = query(
+//     collection(dbService, "comments"),
+//     orderBy("createdAt", "desc")
+//   );
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((doc) => {
+//     const commentObj = {
+//       id: doc.id,
+//       ...doc.data(),
+//     };
+//     cmtObjList.push(commentObj);
+//   });
+//   const commnetList = document.getElementById("comment-list");
+//   const currentUid = authService.currentUser.uid;
+//   commnetList.innerHTML = "";
+//   cmtObjList.forEach((cmtObj) => {
+//     const isOwner = currentUid === cmtObj.creatorId;
+//     const temp_html = `<div class="card commentCard">
+//             <div class="card-body">
+//                 <blockquote class="blockquote mb-0">
+//                     <p class="commentText">${cmtObj.text}</p>
+//                     <p id="${
+//                       cmtObj.id
+//                     }" class="noDisplay"><input class="newCmtInput" type="text" maxlength="30" /><button class="updateBtn" onclick="update_comment(event)">완료</button></p>
+//                     <footer class="quote-footer"><div>BY&nbsp;&nbsp;<img class="cmtImg" width="50px" height="50px" src="${
+//                       cmtObj.profileImg
+//                     }" alt="profileImg" /><span>${
+//       cmtObj.nickname ?? "닉네임 없음"
+//     }</span></div><div class="cmtAt">${new Date(cmtObj.createdAt)
+//       .toString()
+//       .slice(0, 25)}</div></footer>
+//                 </blockquote>
+//                 <div class="${isOwner ? "updateBtns" : "noDisplay"}">
+//                      <button onclick="onEditing(event)" class="editBtn btn btn-dark">수정</button>
+//                   <button name="${
+//                     cmtObj.id
+//                   }" onclick="delete_comment(event)" class="deleteBtn btn btn-dark">삭제</button>
+//                 </div>
+//               </div>
+//        </div>`;
+//     const div = document.createElement("div");
+//     div.classList.add("mycards");
+//     div.innerHTML = temp_html;
+//     commnetList.appendChild(div);
+//   });
+// };
+
+// Storage 로직
+/*
+Storage.postImg.postId 접근하는 경로
+
+postImg: {
+  postId: 이미지
+}
+*/
