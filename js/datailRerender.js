@@ -67,8 +67,9 @@ export async function rerenderDetail(postId) {
             </div>
             <h4 id="modalTitle">${post[0].title}</h4>
             <time id="modalDate">${new Date(post[0].time)
+              .toISOString()
               .toString()
-              .slice(0, 25)}</time>
+              .slice(0, 10)}</time>
 
             <div class="img-container" style="pointer-events: none;">
               <form id="uplord" onsubmit="">
