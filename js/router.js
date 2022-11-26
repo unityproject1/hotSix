@@ -3,14 +3,13 @@
  */
 import { getCommentList } from "./loging.js";
 
-
 import { $ } from "./util.js";
 import { authService } from "./firebase.js";
 
 export const route = (event) => {
   event.preventDefault();
   window.location.hash = event.target.hash;
-  console.log(event.target.hash);
+  // console.log(event.target.hash);
 };
 
 export const gotoPage = () => {

@@ -84,18 +84,17 @@
   cursor: pointer;
 }
 .modalGrid #modalButtonModify {
-  background-image: url("");
   background-size: cover;
+  background-color: white;
 }
 .modalGrid #modalModify-completed {
   background-image: url("");
   background-size: cover;
   display: none;
 }
-.modalGrid .modalButtonDelete {
-  background-image: url("");
+.modalGrid #modalButtonDelete {
+  background-color: white;
   background-size: cover;
-  margin-left: -3px;
 }
 
 .modal-container {
@@ -281,4 +280,76 @@
 
 .btn-hide {
   display: none !important;
+}
+
+.modal {
+  width: 27rem;
+  height: 252px;
+  border-radius: 1rem;
+  padding: 80px 24px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.modal .btn {
+  cursor: pointer;
+  border: 1px solid #333d4b;
+  text-align: center;
+  border-radius: 5px;
+  outline: none;
+  font-weight: 500;
+}
+
+.dimLayer {
+  display: block;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.04);
+  position: fixed;
+  left: 0;
+  top: 0px;
+  margin: 0;
+  padding: 0;
+  z-index: 9998;
+}
+
+#modal-section {
+  background: #ffffff;
+  box-sizing: border-box;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0px 16px 72px 16px rgba(0, 0, 0, 0.0392156863);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.menu_msg {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.enroll_box p {
+  padding-bottom: 56px;
+  color: #333d4b;
+}
+
+.gray_btn {
+  width: 90px;
+  background: #ffffff;
+  color: #333d4b;
+  height: 36px;
+  line-height: 36px;
+  transition: 0.5s;
+  font-size: 17px;
+}
+
+.pink_btn {
+  width: 90px;
+  background: #333d4b;
+  color: #fff;
+  height: 36px;
+  line-height: 36px;
+  transition: 0.5s;
+  font-size: 17px;
+  border: none;
 }/*# sourceMappingURL=detail.css.map */
