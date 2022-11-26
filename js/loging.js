@@ -49,59 +49,6 @@ export const save_comment = async (event) => {
   }
 };
 
-// export const onEditing = (event) => {
-//   // 수정버튼 클릭
-//   event.preventDefault();
-//   const udBtns = document.querySelectorAll(".editBtn, .deleteBtn");
-//   udBtns.forEach((udBtn) => (udBtn.disabled = "true"));
-
-//   const cardBody = event.target.parentNode.parentNode;
-//   const commentText = cardBody.children[0].children[0];
-//   const commentInputP = cardBody.children[0].children[1];
-
-//   commentText.classList.add("noDisplay");
-//   commentInputP.classList.add("d-flex");
-//   commentInputP.classList.remove("noDisplay");
-//   commentInputP.children[0].focus();
-// };
-
-// 수정
-// export const update_comment = async (event) => {
-//   event.preventDefault();
-//   const newComment = event.target.parentNode.children[0].value;
-//   const id = event.target.parentNode.id;
-
-//   const parentNode = event.target.parentNode.parentNode;
-//   const commentText = parentNode.children[0];
-//   commentText.classList.remove("noDisplay");
-//   const commentInputP = parentNode.children[1];
-//   commentInputP.classList.remove("d-flex");
-//   commentInputP.classList.add("noDisplay");
-
-//   const commentRef = doc(dbService, "comments", id);
-//   try {
-//     await updateDoc(commentRef, { text: newComment });
-//     getCommentList();
-//   } catch (error) {
-//     alert(error);
-//   }
-// };
-
-// // 삭제
-// export const delete_comment = async (event) => {
-//   event.preventDefault();
-//   const id = event.target.name;
-//   const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
-//   if (ok) {
-//     try {
-//       await deleteDoc(doc(dbService, "comments", id));
-//       getCommentList();
-//     } catch (error) {
-//       alert(error);
-//     }
-//   }
-// };
-
 // 2. 가져오기
 export const getCommentList = async () => {
   let postList = [];
@@ -139,7 +86,7 @@ export const getCommentList = async () => {
     <h4>${postObj.title}</h4>
     <p>${postObj.subTitle}</p>
     <time class="time">
-      ${new Date(postObj.time).toString().slice(0, 25)}
+      ${new Date(postObj.time).toISOString().toString().slice(0, 10)}
     </time>
   </div>
 </div>
@@ -147,7 +94,7 @@ export const getCommentList = async () => {
     const div = document.createElement("div");
     div.innerHTML = temp_html;
     contentList.appendChild(div);
-    
+    console.log();
   });
 };
 
