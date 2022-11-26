@@ -1,5 +1,6 @@
 /**
  * 모듈 미완성
+ * @todo 로그인 후 새로고침시 nav 로그아웃이 남아야 합니다.
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/auth.js
  */
 
@@ -33,7 +34,6 @@ $(`.signup-modal`).style.display = "none";
 export const openPopupLogin = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = true; // 사용자는 로그인 모달로 접근했습니다.
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
@@ -47,12 +47,6 @@ export const logout = () => {
       // Sign-out successful.
       localStorage.clear();
       console.log("로그아웃 성공");
-      let logInEl = document.querySelector("#login");
-      logInEl.style.display = "block";
-      logOutEl.style.display = "none";
-      $(`.create-content`).style.display = "none";
-      createPostEl.style.display = "none";
-      mypageEl.style.display = "none";
     })
     .catch((error) => {
       // An error happened.
@@ -63,7 +57,6 @@ export const logout = () => {
 export const switchPopupSignup = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = false; // 사용자는 회원가입 모달로 접근했습니다.
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "block";
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "none";
@@ -72,28 +65,20 @@ export const switchPopupSignup = () => {
 export const closePopup = () => {
   document.body.style = `overflow: auto`;
   authRouteLogin = false;
-  console.log(authRouteLogin);
   $(`.overlay`).style.display = "none";
   $(`.auth-container`).style.display = "none";
   $(`.login-modal`).style.display = "none";
   $(`.signup-modal`).style.display = "none";
 };
 // 로그인 nav 변수
-let logInEl = document.querySelector("#login");
-let logOutEl = document.querySelector("#logout");
-let createPostEl = document.querySelector("#create-post");
-let mypageEl = document.querySelector("#myPage");
-
-/**
- *
- * @param {*} event
- * @returns
- */
+const logInEl = $("#login");
+const logOutEl = $("#logout");
+const myPageEl = $("#my-page");
+const create = $("#create");
 
 // 로그인 성공 시 팬명록 화면으로 이동
 export const handleAuth = (event) => {
   event.preventDefault();
-  console.log(authRouteLogin);
   const loginEmailVal = $(`#login-email`).value;
   const pwVal = $(`#login-password`).value;
   const signupEmailVal = $(`#signup-email`).value;
@@ -132,18 +117,16 @@ export const handleAuth = (event) => {
   // 제출버튼의 value를 기준으로 선택할 수 있어야 합니다.
   if (authRouteLogin === true) {
     // 유효성검사 후 로그인 성공 시 팬명록 화면으로
-    console.log("login");
     signInWithEmailAndPassword(authService, loginEmailVal, pwVal)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("user=", user);
         closePopup(); // 라우트 위치는 그대로 두고 modal을 닫습니다.
 
-        logInEl.style.display = "none";
-        logOutEl.style.display = "block";
-        createPostEl.style.display = "block";
-        mypageEl.style.display = "block";
+        // logInEl.style.display = "none";
+        // logOutEl.style.display = "block";
+        // createPostEl.style.display = "block";
+        // mypageEl.style.display = "block";
         $(`.create-content`).style.display = "flex";
       })
       .catch((error) => {
@@ -183,8 +166,6 @@ export const socialLogin = (event) => {
     provider = new GoogleAuthProvider();
   } else if (name === "github") {
     provider = new GithubAuthProvider();
-    // TODO kakao AuthProvider 추가하기
-    console.log("깃헙 로그인 시도");
   }
   signInWithPopup(authService, provider)
     .then((result) => {
@@ -199,3 +180,19 @@ export const socialLogin = (event) => {
 };
 
 // 로그인 했을때 로그인에 따라 맞는 nav 메뉴 변경
+authService.onAuthStateChanged((user) => {
+  // user === authService.currentUser 와 같은 값
+  if (user) {
+    // 로그인 상태인 경우
+    logInEl.style.display = "none";
+    myPageEl.style.display = "block";
+    logOutEl.style.display = "block";
+    create.style.display = "block";
+  } else {
+    // 로그아웃 상태인 경우
+    logInEl.style.display = "block";
+    myPageEl.style.display = "none";
+    logOutEl.style.display = "none";
+    create.style.display = "none";
+  }
+});

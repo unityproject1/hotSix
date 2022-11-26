@@ -125,8 +125,11 @@ html {
   flex-direction: row;
   gap: 1rem;
 }
-.content-container #container #profile .user-name input {
+.content-container #container #profile .user-name .submit-input {
   width: 21rem;
+}
+.content-container #container #profile .user-name .submit-btn {
+  cursor: pointer;
 }
 .content-container #container .my-article-section-title {
   margin: 0 0 2rem;

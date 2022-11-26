@@ -119,8 +119,11 @@ html {
         display: flex;
         flex-direction: row;
         gap: 1rem;
-        input {
+        .submit-input {
           width: 21rem;
+        }
+        .submit-btn {
+          cursor: pointer;
         }
       }
     }
