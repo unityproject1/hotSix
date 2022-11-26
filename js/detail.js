@@ -112,8 +112,8 @@ export function modaldown() {
 
 // 모달내에서 페이지 삭제
 let postRef = null;
-export async function modalDelete(event) {
-  event.preventDefault();
+export async function modalDelete() {
+  // event.preventDefault();
   const q = query(
     collection(dbService, "posts"),
     where("postId", "==", postId)
@@ -163,7 +163,8 @@ $(function () {
           await route();
           // window.location.hash = "";
         } catch (error) {
-          alert(error);
+          // alert(error);
+          console.log(error);
         }
       }
     });
