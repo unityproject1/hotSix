@@ -1,9 +1,7 @@
 /**
- * @todo 서버에서 프로필 이미지 가져오기
- * @todo 서버에서 프로필 이미지 보내기
+ * @todo DOM 내 게시물 그려주기
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/pages/profile.js
  *
- * photoURL을 유저에게서 얻어와 활용합니다.
  *
  * 파이어 베이스 storage 공식 문서
  * @see https://firebase.google.com/docs/storage/web/upload-files?hl=en&authuser=0
@@ -98,8 +96,9 @@ export const readMyPost = async () => {
       myPostList.push(postObj);
     });
     myPostList.forEach((post) => {
-      // DOM업데이트하면서 그려주기
+      // TODO DOM업데이트하면서 그려주기
       console.log(post.time);
+      const $div = document.createElement("div");
     });
   });
   return;
