@@ -1,27 +1,37 @@
-<div class="modal-container">
+<div class="create-post-container">
     <!-- 이미지 작성 -->
+    <div class="img-filebox">
+        <form id="createPost-img" onsubmit="">
+            <label for="img-input">
+                <img id="modalPicture"
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+                    alt="content-img" />
+            </label>
+            <input onchange="modalFileChange(event)" id="img-input" type="file" accept="images/*"
+                style="display: none;" />
+        </form>
 
-    <form id="createPost-img" onsubmit="">
-        <!-- https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/pages/profile.html -->
-        <label for="img-input">
-            <img id="modalPicture" src="../static/images/example2.png" alt="content-img" />
-            <input onchange="modalFileChange(event)" id="postImg" type="file" accept="images/*" />
-        </label>
-    </form>
+    </div>
     <!-- 제목작성 -->
-    <div class="createPost-title field">
-        <input type="input" id="postTitle" class="form__field" name="title" placeholder="title" required />
-        <label for="" class="form__label">제목</label>
+    <div class="update-content-container">
+        <div class="createPost field">
+            <input type="input" id="postTitle" class="form__field" name="title" placeholder="title" required />
+            <label for="" class="form__label">제목</label>
+        </div>
+        <!-- 서브 제목  -->
+        <div class="createPost subTitle field">
+            <input type="input" id="postsubTitle" class="form__field" name="subTitle" placeholder="title" required />
+            <label for="" class="form__label">소제목</label>
+        </div>
+        <!-- 글작성 -->
+        <!-- <div class="createPost-desc">
+            <label for="content-label">내용</label>
+            <textarea id="postDesc"></textarea>
+        </div> -->
+        <div class="createPost createPost-desc field">
+            <input type="input" id="postDesc" class="form__field" name="desc" placeholder="title" required />
+            <label for="" class="form__label">내용</label>
+        </div>
     </div>
-    <!-- 서브 제목  -->
-    <div class="createPost-title subTitle field">
-        <input type="input" id="postsubTitle" class="form__field" name="title" placeholder="title" required />
-        <label for="" class="form__label">소제목</label>
-    </div>
-    <!-- 글작성 -->
-    <div class="createPost-desc">
-        <label for="content-label">내용</label>
-        <textarea id="postDesc"></textarea>
-    </div>
-    <button onclick="save_comment()">저장하기</button>
+    <button class="post_save_btn" onclick="save_comment()">저장하기</button>
 </div>

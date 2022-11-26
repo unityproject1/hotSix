@@ -6,6 +6,7 @@ body {
   --Grey800: #333d4b;
   --adaptiveOpacity300: rgba(0, 29, 58, 0.18);
   --adaptiveOpacity50: rgba(0, 23, 51, 0.05);
+  min-width: 500px !important;
 }
 
 .Login {
@@ -217,3 +218,6 @@ body {
     font-size: 26px;
   }
 }
+
+
+

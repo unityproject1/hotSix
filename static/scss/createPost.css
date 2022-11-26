@@ -1,1 +1,111 @@
-/*# sourceMappingURL=createPost.css.map */
+.create-post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.img-filebox #createPost-img label img {
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.img-filebox #createPost-img label img:hover {
+  opacity: 0.7;
+}
+
+.update-content-container {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  /* reset input */
+}
+.update-content-container .createPost {
+  position: relative;
+  margin-top: 15px;
+}
+.update-content-container .form__field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid;
+  outline: 0;
+  font-size: 1.4rem;
+  color: #9b9b9b;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.update-content-container .form__field::-moz-placeholder {
+  color: transparent;
+}
+.update-content-container .form__field:-ms-input-placeholder {
+  color: transparent;
+}
+.update-content-container .form__field::placeholder {
+  color: transparent;
+}
+.update-content-container .form__field:-moz-placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+.update-content-container .form__field:-ms-input-placeholder ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+.update-content-container .form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+.update-content-container .field {
+  margin-top: 30px;
+}
+.update-content-container .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+.update-content-container .form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  -o-border-image: linear-gradient(to right, #90c2ff, #64a8ff);
+     border-image: linear-gradient(to right, #90c2ff, #64a8ff);
+  border-image-slice: 1;
+}
+.update-content-container .form__field:focus ~ .form__label {
+  position: absolute;
+  top: -10px;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.8rem;
+  color: #90c2ff;
+  font-weight: 700;
+}
+.update-content-container .form__field:required, .update-content-container .form__field:invalid {
+  box-shadow: none;
+}
+
+.post_save_btn {
+  color: white;
+  background-color: #9b9b9b;
+  border-radius: 5px;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  margin: 30px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.post_save_btn:hover {
+  background-color: #90c2ff;
+}/*# sourceMappingURL=createPost.css.map */
