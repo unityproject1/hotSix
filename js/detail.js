@@ -68,7 +68,9 @@ export async function modalModifyClose() {
   try {
     await updateDoc(postRef, {
       title: modifiedTitle,
+      // subtitle : 
       desc: modifiedContent,
+
     });
   } catch (error) {
     console.log(error);

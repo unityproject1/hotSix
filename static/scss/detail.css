@@ -13,9 +13,6 @@
   opacity: 0;
   background: rgba(0, 0, 0, 0.8);
 }
-.modalFirstBlack .append-wrapper {
-  width: 100%;
-}
 
 .modal-side {
   position: relative;
@@ -137,6 +134,7 @@
 .modal-container .content-dsc {
   color: rgb(78, 89, 104);
   margin: 60px 40px;
+  text-align: start;
 }
 .modal-container .content-dsc .modalContent {
   line-height: 2;
