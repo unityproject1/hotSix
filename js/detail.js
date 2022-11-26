@@ -10,6 +10,7 @@ import { dbService } from "./firebase.js";
 import { rerenderDetail } from "./datailRerender.js";
 import { goBack } from "./loging.js";
 import { route } from "./router.js";
+import { getCommentList } from "./loging.js";
 // 포스트아이디 전역변수 지정
 let postId;
 
@@ -159,9 +160,9 @@ $(function () {
         try {
           console.log(res, postRef);
           await deleteDoc(postRef);
-          // goBack();
-          await route(event);
-          // window.location.hash = "";
+          modaldown();
+          window.location.hash = "";
+          getCommentList();
         } catch (error) {
           // alert(error);
           console.log(error);
