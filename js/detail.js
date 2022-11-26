@@ -141,6 +141,7 @@ export async function modalup(event) {
       </div>
   `;
   const div = document.createElement("div");
+  div.className = "append-wrapper";
   div.innerHTML = temp_postHtml;
   postContent.appendChild(div);
 

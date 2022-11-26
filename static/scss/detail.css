@@ -13,6 +13,9 @@
   opacity: 0;
   background: rgba(0, 0, 0, 0.8);
 }
+.modalFirstBlack .append-wrapper {
+  width: 100%;
+}
 
 .modal-side {
   width: 100%;
