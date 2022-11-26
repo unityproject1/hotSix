@@ -157,9 +157,10 @@ $(function () {
     action_popup.confirm("삭제하시겠습니까?", async function (res) {
       if (res) {
         try {
+          console.log(res, postRef);
           await deleteDoc(postRef);
-          goBack();
-          route();
+          // goBack();
+          await route();
           // window.location.hash = "";
         } catch (error) {
           alert(error);
