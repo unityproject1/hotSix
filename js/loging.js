@@ -66,41 +66,41 @@ export const save_comment = async (event) => {
 // };
 
 // 수정
-export const update_comment = async (event) => {
-  event.preventDefault();
-  const newComment = event.target.parentNode.children[0].value;
-  const id = event.target.parentNode.id;
+// export const update_comment = async (event) => {
+//   event.preventDefault();
+//   const newComment = event.target.parentNode.children[0].value;
+//   const id = event.target.parentNode.id;
 
-  const parentNode = event.target.parentNode.parentNode;
-  const commentText = parentNode.children[0];
-  commentText.classList.remove("noDisplay");
-  const commentInputP = parentNode.children[1];
-  commentInputP.classList.remove("d-flex");
-  commentInputP.classList.add("noDisplay");
+//   const parentNode = event.target.parentNode.parentNode;
+//   const commentText = parentNode.children[0];
+//   commentText.classList.remove("noDisplay");
+//   const commentInputP = parentNode.children[1];
+//   commentInputP.classList.remove("d-flex");
+//   commentInputP.classList.add("noDisplay");
 
-  const commentRef = doc(dbService, "comments", id);
-  try {
-    await updateDoc(commentRef, { text: newComment });
-    getCommentList();
-  } catch (error) {
-    alert(error);
-  }
-};
+//   const commentRef = doc(dbService, "comments", id);
+//   try {
+//     await updateDoc(commentRef, { text: newComment });
+//     getCommentList();
+//   } catch (error) {
+//     alert(error);
+//   }
+// };
 
-// 삭제
-export const delete_comment = async (event) => {
-  event.preventDefault();
-  const id = event.target.name;
-  const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
-  if (ok) {
-    try {
-      await deleteDoc(doc(dbService, "comments", id));
-      getCommentList();
-    } catch (error) {
-      alert(error);
-    }
-  }
-};
+// // 삭제
+// export const delete_comment = async (event) => {
+//   event.preventDefault();
+//   const id = event.target.name;
+//   const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
+//   if (ok) {
+//     try {
+//       await deleteDoc(doc(dbService, "comments", id));
+//       getCommentList();
+//     } catch (error) {
+//       alert(error);
+//     }
+//   }
+// };
 
 // 2. 가져오기
 export const getCommentList = async () => {
@@ -147,7 +147,7 @@ export const getCommentList = async () => {
     const div = document.createElement("div");
     div.innerHTML = temp_html;
     contentList.appendChild(div);
-    // gotoHome();
+    
   });
 };
 
@@ -173,6 +173,6 @@ export const getCommentList = async () => {
 //               </div>
 //        </div>`;
 
-function goBack() {
+export function goBack() {
   window.history.go(-1);
 }
