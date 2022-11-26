@@ -153,14 +153,14 @@ export const modalFileChange = (event) => {
 // 삭제 확인 모달
 $(function () {
   //사용 예시 **************************
-  $(document).on("click", "#modalButtonDelete", function () {
+  $(document).on("click", "#modalButtonDelete", function (event) {
     action_popup.confirm("삭제하시겠습니까?", async function (res) {
       if (res) {
         try {
           console.log(res, postRef);
           await deleteDoc(postRef);
           // goBack();
-          await route();
+          await route(event);
           // window.location.hash = "";
         } catch (error) {
           // alert(error);
