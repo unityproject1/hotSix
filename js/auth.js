@@ -30,6 +30,7 @@ $(`.overlay`).style.display = "none";
 $(`.login-modal`).style.display = "none";
 $(`.signup-modal`).style.display = "none";
 
+// 로그인
 export const openPopupLogin = () => {
   document.body.style = `overflow: hidden`;
   authRouteLogin = true; // 사용자는 로그인 모달로 접근했습니다.
@@ -37,6 +38,20 @@ export const openPopupLogin = () => {
   $(`.auth-container`).style.display = "flex";
   $(`.login-modal`).style.display = "flex";
   $(`.signup-modal`).style.display = "none";
+};
+
+// 로그아웃
+export const logout = () => {
+  signOut(authService)
+    .then(() => {
+      // Sign-out successful.
+      localStorage.clear();
+      console.log("로그아웃 성공");
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log("error:", error);
+    });
 };
 
 export const switchPopupSignup = () => {
@@ -108,8 +123,11 @@ export const handleAuth = (event) => {
         const user = userCredential.user;
         closePopup(); // 라우트 위치는 그대로 두고 modal을 닫습니다.
 
-        logInEl.style.display = "none";
-        logOutEl.style.display = "block";
+        // logInEl.style.display = "none";
+        // logOutEl.style.display = "block";
+        // createPostEl.style.display = "block";
+        // mypageEl.style.display = "block";
+        $(`.create-content`).style.display = "flex";
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -158,21 +176,6 @@ export const socialLogin = (event) => {
       console.log("error:", error);
       const errorCode = error.code;
       const errorMessage = error.message;
-    });
-};
-
-export const logout = () => {
-  signOut(authService)
-    .then(() => {
-      // Sign-out successful.
-      // 새로 고침을 하면 로그인 상태이지만 로그아웃이 nav에 없고 로그인만 또 존재합니다.
-      localStorage.clear();
-      console.log("로그아웃 성공");
-      //
-    })
-    .catch((error) => {
-      // An error happened.
-      console.log("error:", error);
     });
 };
 

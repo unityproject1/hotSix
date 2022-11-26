@@ -1,0 +1,27 @@
+<div class="modal-container">
+    <!-- 이미지 작성 -->
+
+    <form id="createPost-img" onsubmit="">
+        <!-- https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/pages/profile.html -->
+        <label for="img-input">
+            <img id="modalPicture" src="../static/images/example2.png" alt="content-img" />
+            <input onchange="modalFileChange(event)" id="postImg" type="file" accept="images/*" />
+        </label>
+    </form>
+    <!-- 제목작성 -->
+    <div class="createPost-title field">
+        <input type="input" id="postTitle" class="form__field" name="title" placeholder="title" required />
+        <label for="" class="form__label">제목</label>
+    </div>
+    <!-- 서브 제목  -->
+    <div class="createPost-title subTitle field">
+        <input type="input" id="postsubTitle" class="form__field" name="title" placeholder="title" required />
+        <label for="" class="form__label">소제목</label>
+    </div>
+    <!-- 글작성 -->
+    <div class="createPost-desc">
+        <label for="content-label">내용</label>
+        <textarea id="postDesc"></textarea>
+    </div>
+    <button onclick="save_comment()">저장하기</button>
+</div>

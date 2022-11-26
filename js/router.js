@@ -1,6 +1,8 @@
 /**
  * @see https://github.com/rjc1704/Firebase-Lecture-by-Vanilla-JS/blob/master/js/router.js
  */
+import { getCommentList } from "./loging.js";
+
 
 import { $ } from "./util.js";
 import { authService } from "./firebase.js";
@@ -8,13 +10,23 @@ import { authService } from "./firebase.js";
 export const route = (event) => {
   event.preventDefault();
   window.location.hash = event.target.hash;
+  console.log(event.target.hash);
 };
+
+export const gotoPage = () => {
+  window.location.hash = "#createPost";
+};
+
+// export const gotoHome = () => {
+//   window.location.hash = null
+// }
 
 const routes = {
   "/": "/pages/home.html",
   myPage: "/pages/profile.html",
   detail: "/pages/detail.html",
   404: "/pages/404.html",
+  createPost: "/pages/createPost.html",
 };
 
 export const handleLocation = async () => {
@@ -23,6 +35,7 @@ export const handleLocation = async () => {
   // "http://example.com/"가 아니라 도메인 뒤에 / 없이 "http://example.com" 으로 나오는 경우
   if (path.length == 0) {
     path = "/";
+    getCommentList();
   }
   // const route = routes.detail;
   const route = routes[path] || routes[404]; // truthy 하면 route[path], falsy 하면 routes[404]
