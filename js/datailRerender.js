@@ -98,6 +98,15 @@ export async function rerenderDetail(postId) {
           </div>
         </div>
       </div>
+      <section id="modal-section" class="modal type-confirm">
+        <div class="enroll_box">
+          <p class="menu_msg"></p>
+        </div>
+        <div class="enroll_btn">
+          <button class="btn pink_btn btn_ok">삭제</button>
+          <button id="modal_close" class="btn gray_btn modal_close">취소</button>
+        </div>
+      </section>
   `;
   const div = document.createElement("div");
   div.innerHTML = temp_postHtml;

@@ -9,6 +9,7 @@ import {
 import { dbService } from "./firebase.js";
 import { rerenderDetail } from "./datailRerender.js";
 import { goBack } from "./loging.js";
+import { route } from "./router.js";
 // 포스트아이디 전역변수 지정
 let postId;
 
@@ -108,7 +109,9 @@ export function modaldown() {
   // $(`.modalFirstBlack`).addClass("hide");
   // $(`.modalFirstBlack`).removeClass("visible");
 }
+
 // 모달내에서 페이지 삭제
+let postRef = null;
 export async function modalDelete(event) {
   event.preventDefault();
   const q = query(
@@ -121,18 +124,18 @@ export async function modalDelete(event) {
   querySnapshot.forEach((doc) => {
     post = doc;
   });
-  console.log(post);
-  const postRef = post.ref;
+  postRef = post.ref;
 
-  const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
-  if (ok) {
-    try {
-      await deleteDoc(postRef);
-      goBack();
-    } catch (error) {
-      alert(error);
-    }
-  }
+  // 삭제하기 버튼을 클릭시 발생하는 로직
+  // const ok = window.confirm("해당 응원글을 정말 삭제하시겠습니까?");
+  // if (ok) {
+  //   try {
+  //     await deleteDoc(postRef);
+  //     goBack();
+  //   } catch (error) {
+  //     alert(error);
+  //   }
+  // }
 }
 
 export const modalFileChange = (event) => {
@@ -145,4 +148,91 @@ export const modalFileChange = (event) => {
     localStorage.setItem("imgDataUrl2", imgDataUrl);
     document.getElementById("modalPicture").src = imgDataUrl;
   };
+};
+
+// 삭제 확인 모달
+$(function () {
+  //사용 예시 **************************
+  $(document).on("click", "#modalButtonDelete", function () {
+    action_popup.confirm("삭제하시겠습니까?", async function (res) {
+      if (res) {
+        try {
+          await deleteDoc(postRef);
+          goBack();
+          route();
+          // window.location.hash = "";
+        } catch (error) {
+          alert(error);
+        }
+      }
+    });
+  });
+
+  $(document).on("click", "#modal_close", function () {
+    action_popup.close(this);
+  });
+  //사용 예시 **************************
+});
+
+/**
+ *  alert, confirm 대용 팝업 메소드 정의
+ *  timer : 애니메이션 동작 속도
+ *  alert : 경고창
+ *  confirm : 확인창
+ *  open : 팝업 열기
+ *  close : 팝업 닫기
+ */
+var action_popup = {
+  timer: 70,
+  confirm: function (txt, callback) {
+    if (txt == null || txt.trim() == "") {
+      console.warn("confirm message is empty.");
+      return;
+    } else if (callback == null || typeof callback != "function") {
+      console.warn("callback is null or not function.");
+      return;
+    } else {
+      $(".type-confirm .btn_ok").on("click", function () {
+        $(this).unbind("click");
+        callback(true);
+        action_popup.close(this);
+      });
+      this.open("type-confirm", txt);
+    }
+  },
+
+  alert: function (txt) {
+    if (txt == null || txt.trim() == "") {
+      console.warn("confirm message is empty.");
+      return;
+    } else {
+      this.open("type-alert", txt);
+    }
+  },
+
+  open: function (type, txt) {
+    var popup = $("." + type);
+    popup.find(".menu_msg").text(txt);
+    $(".modalFirstBlack").append("<div class='dimLayer'></div>");
+    $(".dimLayer").css("height", $(document).height()).attr("target", type);
+    popup.fadeIn(this.timer);
+  },
+
+  close: function (target) {
+    var modal = $(target).closest("#modal-section");
+    var dimLayer;
+    if (modal.hasClass("type-confirm")) {
+      dimLayer = $(".dimLayer[target=type-confirm]");
+      $(".type-confirm .btn_ok").unbind("click");
+    } else if (modal.hasClass("type-alert")) {
+      dimLayer = $(".dimLayer[target=type-alert]");
+    } else {
+      console.warn("close unknown target.");
+      return;
+    }
+    modal.fadeOut(this.timer);
+    setTimeout(function () {
+      dimLayer != null ? dimLayer.remove() : "";
+    }, this.timer);
+  },
 };
