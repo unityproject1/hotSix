@@ -170,6 +170,8 @@ export const socialLogin = (event) => {
   signInWithPopup(authService, provider)
     .then((result) => {
       const user = result.user;
+      console.log("소셜 로그인성공");
+      closePopup();
     })
     .catch((error) => {
       // Handle Errors here.
