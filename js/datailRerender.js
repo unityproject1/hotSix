@@ -10,6 +10,7 @@ import { dbService, authService } from "./firebase.js";
 // export let postId = rerenderDetail()
 export async function rerenderDetail(postId) {
   // 서버에 postId 값과 같은 데이터 요청
+  let isOwner;
   const q = query(
     collection(dbService, "posts"),
     where("postId", "==", postId)
@@ -28,9 +29,15 @@ export async function rerenderDetail(postId) {
   });
   //   console.log(post);
   // 접속중에있는 userid 와 post 에 저장되있는 작성된 userid 가 같은지 확인하여 isOwner 변수에 저장
-  const currentUid = authService.currentUser.uid;
-  const isOwner = currentUid === post[0].userId;
-  console.log(isOwner, currentUid, post[0].userId);
+
+  if (authService.currentUser === null) {
+    isOwner = false;
+  } else {
+    const currentUid = authService.currentUser.uid;
+    isOwner = currentUid === post[0].userId;
+  }
+
+  // console.log(isOwner, currentUid, post[0].userId);
 
   const postContent = document.querySelector(".modalFirstBlack");
   postContent.innerHTML = "";

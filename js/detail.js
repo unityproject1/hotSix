@@ -70,9 +70,8 @@ export async function modalModifyClose() {
   try {
     await updateDoc(postRef, {
       title: modifiedTitle,
-      // subtitle : 
+      // subtitle :
       desc: modifiedContent,
-
     });
   } catch (error) {
     console.log(error);
@@ -100,6 +99,7 @@ export async function modalup(event) {
       postId = element.id;
     }
   });
+  console.log("포스트 아이디", postId);
   rerenderDetail(postId);
 }
 // 모달 닫기
