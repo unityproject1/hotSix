@@ -22,7 +22,6 @@ export function modalModify() {
   let subTitle = $(`.dsc1 `).text();
   let desc = $(`.dsc2`).text();
 
-  console.log(subTitle, desc);
   $(`#modalButtonModify`).hide();
   $(`#modalTitle`).hide();
   $(`.modalContent`).hide();
@@ -43,8 +42,10 @@ export async function modalModifyClose() {
   $(`#modalModify-completed`).hide();
   $(`#modalDate`).show();
   let modifiedTitle = $(`#modalTitleInput`).val();
+  let modifiedSubTitle = $(`#subtitleText`).val();
   let modifiedContent = $(`#contentTextarea`).val();
-  // console.log(modifiedContent);
+  let modalPicture = $(`#modalPicture`).attr("src");
+
   $(`#modalButtonModify`).show();
 
   $(".img-container").css("pointer-events", "none");
@@ -64,15 +65,16 @@ export async function modalModifyClose() {
   querySnapshot.forEach((doc) => {
     post = doc;
   });
-  console.log(post);
   const postRef = post.ref;
 
   try {
     await updateDoc(postRef, {
       title: modifiedTitle,
-      // subtitle :
+      subTitle: modifiedSubTitle,
       desc: modifiedContent,
+      img: modalPicture,
     });
+    rerenderDetail();
   } catch (error) {
     console.log(error);
   }

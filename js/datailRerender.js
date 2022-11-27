@@ -17,14 +17,15 @@ export async function rerenderDetail(postId) {
   );
   let post = [];
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot);
+  
   querySnapshot.forEach((doc) => {
     const postObj = {
       userId: doc.uid,
       ...doc.data(),
     };
 
-    console.log(doc);
+    
+
     post.push(postObj);
   });
   //   console.log(post);

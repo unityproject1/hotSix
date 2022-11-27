@@ -333,6 +333,7 @@ $gray: #9b9b9b;
   top: 50%;
   left: 50%;
   box-shadow: 0px 16px 72px 16px #0000000a;
+  opacity: 0.92;
 
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -367,4 +368,9 @@ $gray: #9b9b9b;
   transition: 0.5s;
   font-size: 17px;
   border: none;
+  transition: all 0.3s;
+}
+
+.pink_btn:hover {
+  opacity: 0.8;
 }

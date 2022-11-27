@@ -319,6 +319,7 @@
   top: 50%;
   left: 50%;
   box-shadow: 0px 16px 72px 16px rgba(0, 0, 0, 0.0392156863);
+  opacity: 0.92;
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
@@ -352,4 +353,9 @@
   transition: 0.5s;
   font-size: 17px;
   border: none;
+  transition: all 0.3s;
+}
+
+.pink_btn:hover {
+  opacity: 0.8;
 }/*# sourceMappingURL=detail.css.map */
