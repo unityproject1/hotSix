@@ -13,9 +13,11 @@ $blue300: #64a8ff;
   padding: 30px;
 }
 .img-filebox {
+  width: 100%;
   #createPost-img {
     label {
       img {
+        width: 100%;
         border-radius: 15px;
         cursor: pointer;
         transition: all 0.3s;

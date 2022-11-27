@@ -6,7 +6,11 @@
   padding: 30px;
 }
 
+.img-filebox {
+  width: 100%;
+}
 .img-filebox #createPost-img label img {
+  width: 100%;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s;
